@@ -34,7 +34,7 @@ class MarkerCluster extends Plugin
 	 * }
 	 * ```
 	 */
-	public $jsonUrl = false;
+	public $url = false;
 
 	private $_markers = [];
 
@@ -58,20 +58,23 @@ class MarkerCluster extends Plugin
 	/**
 	 * Registers plugin asset bundle
 	 * @param \yii\web\View $view
-	 * @return mixed
+	 * @return static the plugin
 	 */
 	public function registerAssetBundle($view)
 	{
 		MarkerClusterAsset::register($view);
+		return $this;
 	}
 
 	/**
 	 * @param Marker $marker
+	 * @return static the plugin
 	 */
 	public function addLayer(Marker $marker)
 	{
 		$marker->name = $marker->map = null;
 		$this->_markers[] = $marker;
+		return $this;
 	}
 
 	/**
