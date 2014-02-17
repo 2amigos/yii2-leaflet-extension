@@ -37,7 +37,7 @@ class LeafLetAsset extends AssetBundle
 	public $sourcePath = '@vendor/2amigos/yii2-leaflet-extension/assets';
 
 	public $css = [
-		'css/leaftlet.css'
+		'css/leaflet.css'
 	];
 
 	public function init()
