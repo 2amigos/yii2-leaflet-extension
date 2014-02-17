@@ -84,7 +84,7 @@ class MarkerCluster extends Plugin
 	public function encode()
 	{
 		$markers = $this->getMarkers();
-		if(empty($markers) && $this->jsonUrl == false) {
+		if(empty($markers) && $this->url == false) {
 			return "";
 		}
 		$js = [];
@@ -93,8 +93,8 @@ class MarkerCluster extends Plugin
 		$map = $this->map;
 		$js[] = "var $name = L.markerClusterGroup($options);";
 
-		if($this->jsonUrl) {
-			$js[] = "$.getJSON('$this->jsonUrl', function(data){
+		if($this->url) {
+			$js[] = "$.getJSON('$this->url', function(data){
 				if(data.markers){
 					$.each(data.markers, function(){
 						var marker = L.marker(L.latLng(this.lat, this.lng));
