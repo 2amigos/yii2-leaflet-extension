@@ -4,10 +4,10 @@
  * @link http://2amigos.us
  * @license http://www.opensource.org/licenses/bsd-license.php New BSD License
  */
-namespace extensions\leafletjs\layers;
+namespace dosamigos\leaflet\layers;
 
 
-use extensions\leafletjs\types\LatLngBounds;
+use dosamigos\leaflet\types\LatLngBounds;
 use yii\web\JsExpression;
 
 /**
