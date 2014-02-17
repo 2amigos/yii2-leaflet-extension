@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "dosamigos\\leaflet\\plugins\\markercluster": ""
+            "dosamigos\\leaflet\\plugins\\markercluster\\": ""
         }
     }
 }
