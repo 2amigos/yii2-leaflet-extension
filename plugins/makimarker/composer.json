@@ -1,0 +1,22 @@
+{
+    "name": "2amigos/yii2-leaflet-makimarker-plugin",
+    "description": "Yii2 Leaflet plugin to create map icons using Maki Icons from MapBox.",
+    "keywords": ["yii", "extension", "widget", "maps", "leaflet", "plugin"],
+    "type": "yii2-extension",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Antonio Ramirez",
+            "email": "ramirez.cobos@gmail.com",
+            "homepage": "http://2amigos.us"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "dosamigos\\leaflet\\plugins\\makimarker\\": ""
+        }
+    }
+}
