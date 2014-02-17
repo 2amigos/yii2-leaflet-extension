@@ -20,7 +20,7 @@ use yii\web\AssetBundle;
 class MakiMarkerAsset extends AssetBundle
 {
 
-	public $sourcePath = '@vendor/2amigos/yii2-2amigos-makimarker-plugin/assets';
+	public $sourcePath = '@vendor/2amigos/yii2-leaflet-makimarker-plugin/assets';
 
 	public $js = ['js/Leaflet.MakiMarkers.js'];
 
