@@ -1,13 +1,8 @@
 <?php
 /**
- *
- * MakiMarker.php
- *
- * Date: 17/02/14
- * Time: 22:09
- * @author Antonio Ramirez <amigo.cobos@gmail.com>
- * @link http://www.ramirezcobos.com/
- * @link http://www.2amigos.us/
+ * @copyright Copyright (c) 2013 2amigOS! Consulting Group LLC
+ * @link http://2amigos.us
+ * @license http://www.opensource.org/licenses/bsd-license.php New BSD License
  */
 
 namespace dosamigos\leaflet\plugins\makimarker;
@@ -17,6 +12,15 @@ use dosamigos\leaflet\Plugin;
 use yii\web\JsExpression;
 use yii\helpers\Json;
 
+/**
+ * MakiMarker allows to create map icons using Maki Icons from MapBox
+ *
+ * @see https://github.com/jseppi/Leaflet.MakiMarkers
+ * @author Antonio Ramirez <amigo.cobos@gmail.com>
+ * @link http://www.ramirezcobos.com/
+ * @link http://www.2amigos.us/
+ * @package dosamigos\leaflet\plugins\makimarker
+ */
 class MakiMarker extends Plugin
 {
 	/**
@@ -35,7 +39,7 @@ class MakiMarker extends Plugin
 	{
 		$options['icon'] = $icon;
 		$options = Json::encode($options);
-		return "L.MakiMarkers.icon($icon, $options)";
+		return new JsExpression("L.MakiMarkers.icon($options)");
 	}
 
 	/**
