@@ -1,9 +1,8 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: tonydspaniard
- * Date: 13/02/14
- * Time: 00:31
+ * @copyright Copyright (c) 2013 2amigOS! Consulting Group LLC
+ * @link http://2amigos.us
+ * @license http://www.opensource.org/licenses/bsd-license.php New BSD License
  */
 namespace dosamigos\leaflet;
 
