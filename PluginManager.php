@@ -20,7 +20,7 @@ class PluginManager extends Component
 	 */
 	public function __get($name)
 	{
-		if (ArrayHelper::keyExists($name, $this->getPlugins())) {
+		if (ArrayHelper::keyExists($name, $this->getInstalledPlugins())) {
 			return $this->getPlugin($name);
 		}
 		return parent::__get($name);
