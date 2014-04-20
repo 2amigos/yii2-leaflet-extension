@@ -1,15 +1,9 @@
 <?php
 /**
- *
- * PluginManager.php
- *
- * Date: 17/02/14
- * Time: 04:56
- * @author Antonio Ramirez <amigo.cobos@gmail.com>
- * @link http://www.ramirezcobos.com/
- * @link http://www.2amigos.us/
+ * @copyright Copyright (c) 2013 2amigOS! Consulting Group LLC
+ * @link http://2amigos.us
+ * @license http://www.opensource.org/licenses/bsd-license.php New BSD License
  */
-
 namespace dosamigos\leaflet;
 
 use yii\base\Component;
@@ -26,7 +20,7 @@ class PluginManager extends Component
 	 */
 	public function __get($name)
 	{
-		if (ArrayHelper::keyExists($name, $this->getPlugins())) {
+		if (ArrayHelper::keyExists($name, $this->getInstalledPlugins())) {
 			return $this->getPlugin($name);
 		}
 		return parent::__get($name);
