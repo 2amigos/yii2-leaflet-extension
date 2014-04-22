@@ -36,11 +36,11 @@ class LeafLetAsset extends AssetBundle
 	public $sourcePath = '@vendor/2amigos/yii2-leaflet-extension/assets';
 
 	public $css = [
-		'css/leaflet.css'
+		'leaflet/leaflet.css'
 	];
 
 	public function init()
 	{
-		$this->js = YII_DEBUG ? ['js/leaflet-src.js'] : ['js/leaflet.js'];
+		$this->js = YII_DEBUG ? ['leaflet/leaflet-src.js'] : ['leaflet/leaflet.js'];
 	}
 }
