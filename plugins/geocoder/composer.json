@@ -1,0 +1,22 @@
+{
+    "name": "2amigos/yii2-leaflet-geocoder-plugin",
+    "description": "Yii2 LeafLet Plugin to provide support for address lookup with dropdown list of results to Leaflet.",
+    "keywords": ["yii", "extension", "widget", "maps", "leaflet", "plugin"],
+    "type": "yii2-extension",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Antonio Ramirez",
+            "email": "ramirez.cobos@gmail.com",
+            "homepage": "http://2amigos.us"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "dosamigos\\leaflet\\plugins\\geocoder\\": ""
+        }
+    }
+}
