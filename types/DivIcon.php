@@ -113,12 +113,12 @@ class DivIcon extends Type
 		$options = [];
 		$class = new \ReflectionClass(__CLASS__);
 		foreach ($class->getProperties(\ReflectionProperty::IS_PUBLIC) as $property) {
-			if (!$property->isStatic()) {
-				$names[] = $property->getName();
+			if (!$property->isStatic() && $property->getName() != 'name') {
+				$options[$property->getName] = $this->{$property->getName()};
 			}
 		}
 		foreach ($class->getMethods(\ReflectionMethod::IS_PUBLIC) as $method) {
-			if (substr($method->name, 0, 3) == 'get') {
+			if (substr($method->name, 0, 3) == 'get' && $method->name != 'getOptions') {
 				$name = strtolower(substr($method->name, 3, 1)) . substr($method->name, 4);
 				$point = $method->invoke($this);
 				if ($point instanceof Point) {
