@@ -114,7 +114,8 @@ class DivIcon extends Type
 		$class = new \ReflectionClass(__CLASS__);
 		foreach ($class->getProperties(\ReflectionProperty::IS_PUBLIC) as $property) {
 			if (!$property->isStatic() && $property->getName() != 'name') {
-				$options[$property->getName()] = $this->{$property->getName()};
+				$name = $property->getName();
+				$options[$name] = $this->{$name};
 			}
 		}
 		foreach ($class->getMethods(\ReflectionMethod::IS_PUBLIC) as $method) {
