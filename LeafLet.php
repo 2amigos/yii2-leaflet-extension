@@ -131,7 +131,7 @@ class LeafLet extends Component
 	 */
 	public function setTileLayer(TileLayer $tileLayer)
 	{
-		if (strcmp($tileLayer->map, $this->name) !== 0) {
+		if (!empty($tileLayer->map) && strcmp($tileLayer->map, $this->name) !== 0) {
 			$this->name = $tileLayer->map;
 		}
 		$this->_tileLayer = $tileLayer;
