@@ -12,7 +12,8 @@
         }
     ],
     "require": {
-        "yiisoft/yii2": "*"
+        "yiisoft/yii2": "*",
+        "bower-asset/leaflet": "0.7.*@stable"
     },
     "autoload": {
         "psr-4": {
