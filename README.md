@@ -49,10 +49,11 @@ $tileLayer = new \dosamigos\leaflet\layers\TileLayer([
 
 // now our component and we are going to configure it
 $leaflet = new \dosamigos\leaflet\LeafLet([
-    'tileLayer' => $tileLayer, // set the TileLayer
     'center' => $center, // set the center
 ]);
-$leaflet->addLayer($marker); // add the marker (addLayer is used to add different layers to our map)
+// Different layers can be added to our map using the `addLayer` function.
+$leaflet->addLayer($marker)      // add the marker
+        ->addLayer($tileLayer);  // add the tile layer
 
 // finally render the widget
 echo \dosamigos\leaflet\widgets\Map::widget(['leafLet' => $leaflet]);
