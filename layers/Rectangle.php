@@ -21,45 +21,45 @@ use yii\web\JsExpression;
  */
 class Rectangle extends Layer
 {
-	use PopupTrait;
+    use PopupTrait;
 
-	/**
-	 * @var LatLngBounds
-	 */
-	private $_bounds;
+    /**
+     * @var LatLngBounds
+     */
+    private $_bounds;
 
-	/**
-	 * @param LatLngBounds $bounds
-	 */
-	public function setBounds(LatLngBounds $bounds)
-	{
-		$bounds->name = null;
-		$this->_bounds = $bounds;
-	}
+    /**
+     * @param LatLngBounds $bounds
+     */
+    public function setBounds(LatLngBounds $bounds)
+    {
+        $bounds->name = null;
+        $this->_bounds = $bounds;
+    }
 
-	/**
-	 * @return LatLngBounds
-	 */
-	public function getBounds()
-	{
-		return $this->_bounds;
-	}
+    /**
+     * @return LatLngBounds
+     */
+    public function getBounds()
+    {
+        return $this->_bounds;
+    }
 
-	/**
-	 * Returns the javascript ready code for the object to render
-	 * @return string
-	 */
-	function encode()
-	{
-		$bounds = $this->getBounds()->encode();
-		$options = $this->getOptions();
-		$name = $this->name;
-		$map = $this->map;
-		$js = $this->bindPopupContent("L.rectangle($bounds, $options)") . ($map !== null ? ".addTo($map);" : "");
-		if (!empty($name)) {
-			$js = "var $name = $js" . ($map !== null ? "" : ";");
-		}
-		return new JsExpression($js);
-	}
+    /**
+     * Returns the javascript ready code for the object to render
+     * @return string
+     */
+    function encode()
+    {
+        $bounds = $this->getBounds()->encode();
+        $options = $this->getOptions();
+        $name = $this->name;
+        $map = $this->map;
+        $js = $this->bindPopupContent("L.rectangle($bounds, $options)") . ($map !== null ? ".addTo($map);" : "");
+        if (!empty($name)) {
+            $js = "var $name = $js" . ($map !== null ? "" : ";");
+        }
+        return new JsExpression($js);
+    }
 
 } 

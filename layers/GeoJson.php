@@ -20,31 +20,32 @@ use yii\web\JsExpression;
  * @link http://www.2amigos.us/
  * @package dosamigos\leaflet\layers
  */
-class GeoJson extends Layer {
+class GeoJson extends Layer
+{
 
-	/**
-	 * @var array geo spatial data interchange json object. For information related to GeoJSON format, please visit
-	 * [http://geojson.org/geojson-spec.html](http://geojson.org/geojson-spec.html). This component does not validate
-	 * this data, it just renders it. This array will be converted into a json object previous encoding.
-	 */
-	public $data = [];
+    /**
+     * @var array geo spatial data interchange json object. For information related to GeoJSON format, please visit
+     * [http://geojson.org/geojson-spec.html](http://geojson.org/geojson-spec.html). This component does not validate
+     * this data, it just renders it. This array will be converted into a json object previous encoding.
+     */
+    public $data = [];
 
-	/**
-	 * Returns the javascript ready code for the object to render
-	 * @return string|JsExpression
-	 */
-	function encode()
-	{
-		$data = Json::encode($this->data);
-		$options = $this->getOptions();
-		$name = $this->name;
-		$map = $this->map;
-		$js = "L.geoJson($data, $options)" . ($map !== null ? ".addTo($map)" : "") . ";";
-		if (!empty($name)) {
-			$js = "var $name = $js";
-		}
+    /**
+     * Returns the javascript ready code for the object to render
+     * @return string|JsExpression
+     */
+    function encode()
+    {
+        $data = Json::encode($this->data);
+        $options = $this->getOptions();
+        $name = $this->name;
+        $map = $this->map;
+        $js = "L.geoJson($data, $options)" . ($map !== null ? ".addTo($map)" : "") . ";";
+        if (!empty($name)) {
+            $js = "var $name = $js";
+        }
 
-		return new JsExpression($js);
-	}
+        return new JsExpression($js);
+    }
 
 } 

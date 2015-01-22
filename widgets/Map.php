@@ -50,7 +50,9 @@ class Map extends Widget
             $this->options['id'] = $this->getId();
         }
         if (empty($this->leafLet) || !($this->leafLet instanceof LeafLet)) {
-            throw new InvalidConfigException("'leafLet' attribute cannot be empty and should be of type LeafLet component.");
+            throw new InvalidConfigException(
+                "'leafLet' attribute cannot be empty and should be of type LeafLet component."
+            );
         }
         $inlineStyles = ArrayHelper::getValue($this->options, 'style');
         if ($inlineStyles) {

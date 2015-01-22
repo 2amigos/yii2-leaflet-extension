@@ -5,11 +5,9 @@
  */
 
 L.GeoSearch.Provider.Nokia = L.Class.extend({
-    options: {
+    options: {},
 
-    },
-
-    initialize: function(options) {
+    initialize: function (options) {
         options = L.Util.setOptions(this, options);
     },
 
@@ -30,8 +28,8 @@ L.GeoSearch.Provider.Nokia = L.Class.extend({
         var results = [];
         for (var i = 0; i < data.Response.View[0].Result.length; i++)
             results.push(new L.GeoSearch.Result(
-                data.Response.View[0].Result[i].Location.DisplayPosition.Longitude, 
-                data.Response.View[0].Result[i].Location.DisplayPosition.Latitude, 
+                data.Response.View[0].Result[i].Location.DisplayPosition.Longitude,
+                data.Response.View[0].Result[i].Location.DisplayPosition.Latitude,
                 data.Response.View[0].Result[i].Location.Address.Label
             ));
 

@@ -5,7 +5,7 @@ L.Control.Geocoder.RaveGeo = L.Class.extend({
         wordBased: false
     },
 
-    jsonp: function(params, callback, context) {
+    jsonp: function (params, callback, context) {
         var callbackId = '_l_geocoder_' + (L.Control.Geocoder.callbackId++),
             paramParts = [];
         params.prepend = callbackId + '(';
@@ -22,21 +22,21 @@ L.Control.Geocoder.RaveGeo = L.Class.extend({
         document.getElementsByTagName('head')[0].appendChild(script);
     },
 
-    initialize: function(serviceUrl, scheme, options) {
+    initialize: function (serviceUrl, scheme, options) {
         L.Util.setOptions(this, options);
 
         this._serviceUrl = serviceUrl;
         this._scheme = scheme;
     },
 
-    geocode: function(query, cb, context) {
+    geocode: function (query, cb, context) {
         L.Control.Geocoder.jsonp(this._serviceUrl, {
             address: query + this.options.querySuffix,
             scheme: this._scheme,
             outputFormat: 'jsonp',
             deepSearch: this.options.deepSearch,
             wordBased: this.options.wordBased
-        }, function(data) {
+        }, function (data) {
             var results = [];
             for (var i = data.length - 1; i >= 0; i--) {
                 var r = data[i],
@@ -52,6 +52,6 @@ L.Control.Geocoder.RaveGeo = L.Class.extend({
     }
 });
 
-L.Control.Geocoder.raveGeo = function(serviceUrl, scheme, options) {
+L.Control.Geocoder.raveGeo = function (serviceUrl, scheme, options) {
     return new L.Control.Geocoder.RaveGeo(serviceUrl, scheme, options);
 };

@@ -24,75 +24,81 @@ use yii\web\JsExpression;
  */
 class LayerGroup extends Component
 {
-	/**
-	 * @var string the name of the javascript variable that will hold the reference
-	 * to the map object.
-	 */
-	public $map;
+    /**
+     * @var string the name of the javascript variable that will hold the reference
+     * to the map object.
+     */
+    public $map;
 
-	/**
-	 * @var Layer[]
-	 */
-	private $_layers = [];
+    /**
+     * @var Layer[]
+     */
+    private $_layers = [];
 
-	/**
-	 * Adds a layer to the group. If no name given it will be automatically generated.
-	 * @param Layer $layer
-	 * @return $this
-	 * @throws \yii\base\InvalidParamException
-	 */
-	public function addLayer(Layer $layer)
-	{
-		if (($layer instanceof Popup) || ($layer instanceof TileLayer)) {
-			throw new InvalidParamException("'\$layer' cannot be of type Popup or TileLayer.");
-		}
-		$layer->map = null;
-		$this->_layers[$layer->getName(true)] = $layer;
-		return $this;
-	}
+    /**
+     * Adds a layer to the group. If no name given it will be automatically generated.
+     *
+     * @param Layer $layer
+     *
+     * @return $this
+     * @throws \yii\base\InvalidParamException
+     */
+    public function addLayer(Layer $layer)
+    {
+        if (($layer instanceof Popup) || ($layer instanceof TileLayer)) {
+            throw new InvalidParamException("'\$layer' cannot be of type Popup or TileLayer.");
+        }
+        $layer->map = null;
+        $this->_layers[$layer->getName(true)] = $layer;
+        return $this;
+    }
 
-	/**
-	 * Returns a specific layer. Please note that if the layer didn't have a name, it will be dynamically created. This
-	 * method works for those that we know the name previously.
-	 * @param string $name the name of the layer
-	 * @return mixed
-	 */
-	public function getLayer($name)
-	{
-		return ArrayHelper::getValue($this->_layers, $name);
-	}
+    /**
+     * Returns a specific layer. Please note that if the layer didn't have a name, it will be dynamically created. This
+     * method works for those that we know the name previously.
+     *
+     * @param string $name the name of the layer
+     *
+     * @return mixed
+     */
+    public function getLayer($name)
+    {
+        return ArrayHelper::getValue($this->_layers, $name);
+    }
 
-	/**
-	 * Removes a layer with the given name from the group.
-	 * @param $name
-	 * @return mixed|null
-	 */
-	public function removeLayer($name)
-	{
-		return ArrayHelper::remove($this->_layers, $name);
-	}
+    /**
+     * Removes a layer with the given name from the group.
+     *
+     * @param $name
+     *
+     * @return mixed|null
+     */
+    public function removeLayer($name)
+    {
+        return ArrayHelper::remove($this->_layers, $name);
+    }
 
-	/**
-	 * @return Layer[] the added layers
-	 */
-	public function getLayers()
-	{
-		return $this->_layers;
-	}
+    /**
+     * @return Layer[] the added layers
+     */
+    public function getLayers()
+    {
+        return $this->_layers;
+    }
 
-	/**
-	 * @return JsExpression
-	 */
-	public function encode()
-	{
-		$js = [];
-		$layers = $this->getLayers();
-		$names = str_replace(array('"', "'"), "", Json::encode(array_keys($layers)));
-		$map = $this->map;
-		foreach ($layers as $layer) {
-			$js[] = $layer->encode();
-		}
-		$js[] = "L.layerGroup($names).addTo($map);";
-		return new JsExpression(implode("\n", $js));
-	}
+    /**
+     * @return JsExpression
+     */
+    public function encode()
+    {
+        $js = [];
+        $layers = $this->getLayers();
+        $names = str_replace(array('"', "'"), "", Json::encode(array_keys($layers)));
+        $map = $this->map;
+        foreach ($layers as $layer) {
+            $js[] = $layer->encode();
+        }
+        $js[] = "L.layerGroup($names).addTo($map);";
+        return new JsExpression(implode("\n", $js));
+    }
 } 

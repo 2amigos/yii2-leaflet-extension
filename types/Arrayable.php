@@ -15,10 +15,12 @@ namespace dosamigos\leaflet\types;
  */
 interface Arrayable
 {
-	/**
-	 * Converts the object into an array.
-	 * @param bool $encode whether to return the array json_encoded or raw
-	 * @return array the array representation of this object
-	 */
-	public function toArray($encode = false);
+    /**
+     * Converts the object into an array.
+     *
+     * @param bool $encode whether to return the array json_encoded or raw
+     *
+     * @return array the array representation of this object
+     */
+    public function toArray($encode = false);
 }

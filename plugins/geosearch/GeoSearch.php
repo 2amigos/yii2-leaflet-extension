@@ -49,7 +49,9 @@ class GeoSearch extends Plugin
 
     /**
      * Registers plugin asset bundle
+     *
      * @param \yii\web\View $view
+     *
      * @return mixed
      */
     public function registerAssetBundle($view)
@@ -95,11 +97,14 @@ class GeoSearch extends Plugin
                 throw new InvalidConfigException('"$service" holds an unrecognized service type.');
         }
 
-        $this->clientOptions = ArrayHelper::merge([
-            'provider' => new JsExpression($provider),
-            'position' => 'topcenter',
-            'showMarker' => true
-        ], $this->clientOptions);
+        $this->clientOptions = ArrayHelper::merge(
+            [
+                'provider' => new JsExpression($provider),
+                'position' => 'topcenter',
+                'showMarker' => true
+            ],
+            $this->clientOptions
+        );
 
         $options = $this->getOptions();
         $name = $this->getName();
@@ -107,7 +112,7 @@ class GeoSearch extends Plugin
 
         $js = "new L.Control.GeoSearch($options).addTo($map)";
 
-        if(!empty($name)) {
+        if (!empty($name)) {
             $js = "var $name = $js;";
         }
 

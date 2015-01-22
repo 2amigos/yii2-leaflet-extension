@@ -22,6 +22,7 @@ abstract class BaseService extends Object
 {
     /**
      * Registers the required assets for the service to work
+     *
      * @param \yii\web\View $view
      */
     abstract public function registerAssetBundle($view);

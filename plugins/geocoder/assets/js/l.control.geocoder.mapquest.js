@@ -1,11 +1,11 @@
 L.Control.Geocoder.MapQuest = L.Class.extend({
-    initialize: function(key) {
+    initialize: function (key) {
         // MapQuest seems to provide URI encoded API keys,
         // so to avoid encoding them twice, we decode them here
         this._key = decodeURIComponent(key);
     },
 
-    _formatName: function() {
+    _formatName: function () {
         var r = [],
             i;
         for (i = 0; i < arguments.length; i++) {
@@ -17,13 +17,13 @@ L.Control.Geocoder.MapQuest = L.Class.extend({
         return r.join(', ');
     },
 
-    geocode: function(query, cb, context) {
+    geocode: function (query, cb, context) {
         L.Control.Geocoder.jsonp('http://www.mapquestapi.com/geocoding/v1/address', {
             key: this._key,
             location: query,
             limit: 5,
             outFormat: 'json'
-        }, function(data) {
+        }, function (data) {
             var results = [],
                 loc,
                 latLng;
@@ -43,12 +43,12 @@ L.Control.Geocoder.MapQuest = L.Class.extend({
         }, this);
     },
 
-    reverse: function(location, scale, cb, context) {
+    reverse: function (location, scale, cb, context) {
         L.Control.Geocoder.jsonp('http://www.mapquestapi.com/geocoding/v1/reverse', {
             key: this._key,
             location: location.lat + ',' + location.lng,
             outputFormat: 'json'
-        }, function(data) {
+        }, function (data) {
             var results = [],
                 loc,
                 latLng;
@@ -69,6 +69,6 @@ L.Control.Geocoder.MapQuest = L.Class.extend({
     }
 });
 
-L.Control.Geocoder.mapQuest = function(key) {
+L.Control.Geocoder.mapQuest = function (key) {
     return new L.Control.Geocoder.MapQuest(key);
 };

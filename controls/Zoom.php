@@ -21,21 +21,21 @@ use yii\web\JsExpression;
  */
 class Zoom extends Control
 {
-	/**
-	 * Returns the javascript ready code for the object to render
-	 * @return \yii\web\JsExpression
-	 */
-	public function encode()
-	{
-		$this->clientOptions['position'] = $this->position;
-		$options = $this->getOptions();
-		$name = $this->name;
-		$map = $this->map;
-		$js = "L.control.zoom($options)" . ($map !== null ? ".addTo($map);" : "");
-		if (!empty($name)) {
-			$js = "var $name = $js" . ($map !== null ? "" : ";");
-		}
-		return new JsExpression($js);
-	}
+    /**
+     * Returns the javascript ready code for the object to render
+     * @return \yii\web\JsExpression
+     */
+    public function encode()
+    {
+        $this->clientOptions['position'] = $this->position;
+        $options = $this->getOptions();
+        $name = $this->name;
+        $map = $this->map;
+        $js = "L.control.zoom($options)" . ($map !== null ? ".addTo($map);" : "");
+        if (!empty($name)) {
+            $js = "var $name = $js" . ($map !== null ? "" : ";");
+        }
+        return new JsExpression($js);
+    }
 
 } 

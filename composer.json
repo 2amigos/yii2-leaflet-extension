@@ -1,23 +1,29 @@
 {
-    "name": "2amigos/yii2-leaflet-extension",
-    "description": "LeafLet Mobile-Friendly Interactive Maps Extension Library for Yii2.",
-    "keywords": ["yii", "extension", "widget", "maps", "leaflet"],
-    "type": "yii2-extension",
-    "license": "BSD-3-Clause",
-    "authors": [
-        {
-            "name": "Antonio Ramirez",
-            "email": "ramirez.cobos@gmail.com",
-            "homepage": "http://2amigos.us"
-        }
-    ],
-    "require": {
-        "yiisoft/yii2": "*",
-        "bower-asset/leaflet": "0.7.*@stable"
-    },
-    "autoload": {
-        "psr-4": {
-            "dosamigos\\leaflet\\": ""
-        }
+  "name": "2amigos/yii2-leaflet-extension",
+  "description": "LeafLet Mobile-Friendly Interactive Maps Extension Library for Yii2.",
+  "keywords": [
+    "yii",
+    "extension",
+    "widget",
+    "maps",
+    "leaflet"
+  ],
+  "type": "yii2-extension",
+  "license": "BSD-3-Clause",
+  "authors": [
+    {
+      "name": "Antonio Ramirez",
+      "email": "ramirez.cobos@gmail.com",
+      "homepage": "http://2amigos.us"
     }
+  ],
+  "require": {
+    "yiisoft/yii2": "*",
+    "bower-asset/leaflet": "0.7.*@stable"
+  },
+  "autoload": {
+    "psr-4": {
+      "dosamigos\\leaflet\\": ""
+    }
+  }
 }

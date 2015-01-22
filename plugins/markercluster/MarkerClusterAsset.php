@@ -20,19 +20,19 @@ use yii\web\AssetBundle;
 class MarkerClusterAsset extends AssetBundle
 {
 
-	public $css = [
-		'css/MarkerCluster.css',
-		'css/MarkerCluster.Default.css'
-	];
+    public $css = [
+        'css/MarkerCluster.css',
+        'css/MarkerCluster.Default.css'
+    ];
 
-	public $depends = [
-		'yii\web\JqueryAsset',
-		'dosamigos\leaflet\LeafLetAsset',
-	];
+    public $depends = [
+        'yii\web\JqueryAsset',
+        'dosamigos\leaflet\LeafLetAsset',
+    ];
 
-	public function init()
-	{
-		$this->sourcePath = __DIR__ . '/assets';
-		$this->js = YII_DEBUG ? ['js/leaflet.markercluster-src.js'] : ['js/leaflet.markercluster.js'];
-	}
+    public function init()
+    {
+        $this->sourcePath = __DIR__ . '/assets';
+        $this->js = YII_DEBUG ? ['js/leaflet.markercluster-src.js'] : ['js/leaflet.markercluster.js'];
+    }
 } 

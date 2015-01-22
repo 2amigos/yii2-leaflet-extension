@@ -29,7 +29,7 @@ class ServiceMapQuest extends BaseService
      */
     public function init()
     {
-        if($this->key === null) {
+        if ($this->key === null) {
             throw new InvalidConfigException('"$key" cannot be empty.');
         }
     }

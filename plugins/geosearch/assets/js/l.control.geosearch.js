@@ -74,8 +74,8 @@ L.Control.GeoSearch = L.Control.extend({
         this._container.appendChild(this._msgbox);
 
         L.DomEvent
-          .addListener(this._container, 'click', L.DomEvent.stop)
-          .addListener(this._searchbox, 'keypress', this._onKeyUp, this);
+            .addListener(this._container, 'click', L.DomEvent.stop)
+            .addListener(this._searchbox, 'keypress', this._onKeyUp, this);
 
         L.DomEvent.disableClickPropagation(this._container);
 
@@ -86,8 +86,8 @@ L.Control.GeoSearch = L.Control.extend({
         try {
             var provider = this._config.provider;
 
-            if(typeof provider.GetLocations == 'function') {
-                var results = provider.GetLocations(qry, function(results) {
+            if (typeof provider.GetLocations == 'function') {
+                var results = provider.GetLocations(qry, function (results) {
                     this._processResults(results);
                 }.bind(this));
             }
@@ -112,7 +112,7 @@ L.Control.GeoSearch = L.Control.extend({
             delete window.parseLocation;
         };
 
-        function getJsonP (url) {
+        function getJsonP(url) {
             url = url + '&callback=parseLocation'
             var script = document.createElement('script');
             script.id = 'getJsonP';
@@ -166,7 +166,7 @@ L.Control.GeoSearch = L.Control.extend({
         }
     },
 
-    _processResults: function(results) {
+    _processResults: function (results) {
         if (results.length > 0) {
             this._map.fireEvent('geosearch_foundlocations', {Locations: results});
             this._showLocation(results[0]);
@@ -187,7 +187,7 @@ L.Control.GeoSearch = L.Control.extend({
         this._map.fireEvent('geosearch_showlocation', {Location: location});
     },
 
-    _printError: function(message) {
+    _printError: function (message) {
         var elem = this._resultslist;
         elem.innerHTML = '<li>' + message + '</li>';
         elem.style.display = 'block';

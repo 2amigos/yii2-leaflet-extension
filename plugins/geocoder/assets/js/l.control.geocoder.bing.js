@@ -1,13 +1,13 @@
 L.Control.Geocoder.Bing = L.Class.extend({
-    initialize: function(key) {
+    initialize: function (key) {
         this.key = key;
     },
 
-    geocode : function (query, cb, context) {
+    geocode: function (query, cb, context) {
         L.Control.Geocoder.jsonp('http://dev.virtualearth.net/REST/v1/Locations', {
             query: query,
-            key : this.key
-        }, function(data) {
+            key: this.key
+        }, function (data) {
             var results = [];
             for (var i = data.resourceSets[0].resources.length - 1; i >= 0; i--) {
                 var resource = data.resourceSets[0].resources[i],
@@ -22,10 +22,10 @@ L.Control.Geocoder.Bing = L.Class.extend({
         }, this, 'jsonp');
     },
 
-    reverse: function(location, scale, cb, context) {
+    reverse: function (location, scale, cb, context) {
         L.Control.Geocoder.jsonp('http://dev.virtualearth.net/REST/v1/Locations/' + location.lat + ',' + location.lng, {
-            key : this.key
-        }, function(data) {
+            key: this.key
+        }, function (data) {
             var results = [];
             for (var i = data.resourceSets[0].resources.length - 1; i >= 0; i--) {
                 var resource = data.resourceSets[0].resources[i],
@@ -41,6 +41,6 @@ L.Control.Geocoder.Bing = L.Class.extend({
     }
 });
 
-L.Control.Geocoder.bing = function(key) {
+L.Control.Geocoder.bing = function (key) {
     return new L.Control.Geocoder.Bing(key);
 };

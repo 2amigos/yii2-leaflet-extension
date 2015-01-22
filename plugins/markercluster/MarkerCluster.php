@@ -22,79 +22,82 @@ use yii\web\JsExpression;
  */
 class MarkerCluster extends Plugin
 {
-	/**
-	 * @var bool whether to load markers from an external json file. The json file format must be (popup is optional):
-	 *
-	 * ```
-	 * {
-	 * 	markers: [
-	 * 		{lat: 0.00000, lng: 0.00000, popup: 'Text'},
-	 * 		{lat: 0.00000, lng: 0.00000},
-	 * 	]
-	 * }
-	 * ```
-	 */
-	public $url = false;
+    /**
+     * @var bool whether to load markers from an external json file. The json file format must be (popup is optional):
+     *
+     * ```
+     * {
+     *    markers: [
+     *        {lat: 0.00000, lng: 0.00000, popup: 'Text'},
+     *        {lat: 0.00000, lng: 0.00000},
+     *    ]
+     * }
+     * ```
+     */
+    public $url = false;
 
-	private $_markers = [];
+    private $_markers = [];
 
-	/**
-	 * @return array the markers added
-	 */
-	public function getMarkers()
-	{
-		return $this->_markers;
-	}
+    /**
+     * @return array the markers added
+     */
+    public function getMarkers()
+    {
+        return $this->_markers;
+    }
 
-	/**
-	 * Returns the name of the plugin
-	 * @return string
-	 */
-	public function getPluginName()
-	{
-		return 'plugin:markercluster';
-	}
+    /**
+     * Returns the name of the plugin
+     * @return string
+     */
+    public function getPluginName()
+    {
+        return 'plugin:markercluster';
+    }
 
-	/**
-	 * Registers plugin asset bundle
-	 * @param \yii\web\View $view
-	 * @return static the plugin
-	 */
-	public function registerAssetBundle($view)
-	{
-		MarkerClusterAsset::register($view);
-		return $this;
-	}
+    /**
+     * Registers plugin asset bundle
+     *
+     * @param \yii\web\View $view
+     *
+     * @return static the plugin
+     */
+    public function registerAssetBundle($view)
+    {
+        MarkerClusterAsset::register($view);
+        return $this;
+    }
 
-	/**
-	 * @param Marker $marker
-	 * @return static the plugin
-	 */
-	public function addLayer(Marker $marker)
-	{
-		$marker->name = $marker->map = null;
-		$this->_markers[] = $marker;
-		return $this;
-	}
+    /**
+     * @param Marker $marker
+     *
+     * @return static the plugin
+     */
+    public function addLayer(Marker $marker)
+    {
+        $marker->name = $marker->map = null;
+        $this->_markers[] = $marker;
+        return $this;
+    }
 
-	/**
-	 * Returns the javascript ready code for the object to render
-	 * @return \yii\web\JsExpression|string
-	 */
-	public function encode()
-	{
-		$markers = $this->getMarkers();
-		if(empty($markers) && $this->url == false) {
-			return "";
-		}
-		$js = [];
-		$options = $this->getOptions();
-		$name = $this->getName(true);
-		$map = $this->map;
-		$js[] = "var $name = L.markerClusterGroup($options);";
+    /**
+     * Returns the javascript ready code for the object to render
+     * @return \yii\web\JsExpression|string
+     */
+    public function encode()
+    {
+        $markers = $this->getMarkers();
+        if (empty($markers) && $this->url == false) {
+            return "";
+        }
+        $js = [];
+        $options = $this->getOptions();
+        $name = $this->getName(true);
+        $map = $this->map;
+        $js[] = "var $name = L.markerClusterGroup($options);";
 
-		if($this->url) {
-			$js[] = "$.getJSON('$this->url', function(data){
+        if ($this->url) {
+            $js[] = "$.getJSON('$this->url', function(data){
 				if(data.markers){
 					$.each(data.markers, function(){
 						var marker = L.marker(L.latLng(this.lat, this.lng));
@@ -105,15 +108,15 @@ class MarkerCluster extends Plugin
 					});
 				}
 			});";
-		}
-		if($markers) {
-			foreach($markers as $marker) {
-				$js[] = "$name.addLayer({$marker->encode()});";
-			}
-		}
-		$js[] = "$map.addLayer($name);";
+        }
+        if ($markers) {
+            foreach ($markers as $marker) {
+                $js[] = "$name.addLayer({$marker->encode()});";
+            }
+        }
+        $js[] = "$map.addLayer($name);";
 
-		return new JsExpression(implode("\n", $js));
-	}
+        return new JsExpression(implode("\n", $js));
+    }
 
 }

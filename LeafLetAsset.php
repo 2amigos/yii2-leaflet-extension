@@ -13,17 +13,17 @@ use yii\web\AssetBundle;
  *
  * ```
  *  return [
- *		// ...
- * 		'components' => [
- * 			'bundles' => [
- * 				'dosamigos\leaftlet\LeafLetAsset' => [
- * 					'sourcePath' => null,
- * 					'js' => [ 'http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js' ],
- * 					'css' => [ 'http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css' ]
- * 				]
- * 			]
- * 		]
- * 	]
+ *        // ...
+ *        'components' => [
+ *            'bundles' => [
+ *                'dosamigos\leaftlet\LeafLetAsset' => [
+ *                    'sourcePath' => null,
+ *                    'js' => [ 'http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js' ],
+ *                    'css' => [ 'http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css' ]
+ *                ]
+ *            ]
+ *        ]
+ *    ]
  * ```
  *
  * @author Antonio Ramirez <amigo.cobos@gmail.com>
@@ -33,14 +33,14 @@ use yii\web\AssetBundle;
  */
 class LeafLetAsset extends AssetBundle
 {
-	public $sourcePath = '@bower/leaflet/dist';
+    public $sourcePath = '@bower/leaflet/dist';
 
-	public $css = [
-		'leaflet.css'
-	];
+    public $css = [
+        'leaflet.css'
+    ];
 
-	public function init()
-	{
-		$this->js = YII_DEBUG ? ['leaflet-src.js'] : ['leaflet.js'];
-	}
+    public function init()
+    {
+        $this->js = YII_DEBUG ? ['leaflet-src.js'] : ['leaflet.js'];
+    }
 }

@@ -5,17 +5,17 @@ L.Control.Geocoder.Nominatim = L.Class.extend({
         reverseQueryParams: {}
     },
 
-    initialize: function(options) {
+    initialize: function (options) {
         L.Util.setOptions(this, options);
     },
 
-    geocode: function(query, cb, context) {
+    geocode: function (query, cb, context) {
         L.Control.Geocoder.jsonp(this.options.serviceUrl + 'search/', L.extend({
-            q: query,
-            limit: 5,
-            format: 'json'
-        }, this.options.geocodingQueryParams),
-            function(data) {
+                q: query,
+                limit: 5,
+                format: 'json'
+            }, this.options.geocodingQueryParams),
+            function (data) {
                 var results = [];
                 for (var i = data.length - 1; i >= 0; i--) {
                     var bbox = data[i].boundingbox;
@@ -31,13 +31,13 @@ L.Control.Geocoder.Nominatim = L.Class.extend({
             }, this, 'json_callback');
     },
 
-    reverse: function(location, scale, cb, context) {
+    reverse: function (location, scale, cb, context) {
         L.Control.Geocoder.jsonp(this.options.serviceUrl + 'reverse/', L.extend({
             lat: location.lat,
             lon: location.lng,
             zoom: Math.round(Math.log(scale / 256) / Math.log(2)),
             format: 'json'
-        }, this.options.reverseQueryParams), function(data) {
+        }, this.options.reverseQueryParams), function (data) {
             var result = [],
                 loc;
 
@@ -55,6 +55,6 @@ L.Control.Geocoder.Nominatim = L.Class.extend({
     }
 });
 
-L.Control.Geocoder.nominatim = function(options) {
+L.Control.Geocoder.nominatim = function (options) {
     return new L.Control.Geocoder.Nominatim(options);
 };

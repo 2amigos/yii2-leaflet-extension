@@ -4,17 +4,15 @@
  * https://github.com/smeijer/leaflet.control.geosearch
  */
 
-onLoadGoogleApiCallback = function() {
+onLoadGoogleApiCallback = function () {
     L.GeoSearch.Provider.Google.Geocoder = new google.maps.Geocoder();
     document.body.removeChild(document.getElementById('load_google_api'));
 };
 
 L.GeoSearch.Provider.Google = L.Class.extend({
-    options: {
+    options: {},
 
-    },
-
-    initialize: function(options) {
+    initialize: function (options) {
         options = L.Util.setOptions(this, options);
         this.loadMapsApi();
     },
@@ -28,14 +26,14 @@ L.GeoSearch.Provider.Google = L.Class.extend({
         document.body.appendChild(script);
     },
 
-    GetLocations: function(qry, callback) {
+    GetLocations: function (qry, callback) {
         var geocoder = L.GeoSearch.Provider.Google.Geocoder;
 
         var parameters = L.Util.extend({
             address: qry
         }, this.options);
 
-        var results = geocoder.geocode(parameters, function(data){
+        var results = geocoder.geocode(parameters, function (data) {
             data = {results: data};
 
             if (data.results.length == 0)
@@ -49,7 +47,7 @@ L.GeoSearch.Provider.Google = L.Class.extend({
                     data.results[i].formatted_address
                 ));
 
-            if(typeof callback == 'function')
+            if (typeof callback == 'function')
                 callback(results);
         });
     },
