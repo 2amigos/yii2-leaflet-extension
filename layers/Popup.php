@@ -20,40 +20,40 @@ use yii\web\JsExpression;
 class Popup extends Layer
 {
 
-	use LatLngTrait;
+    use LatLngTrait;
 
-	/**
-	 * @var string the HTML content of the popup
-	 */
-	public $content;
+    /**
+     * @var string the HTML content of the popup
+     */
+    public $content;
 
-	/**
-	 * Initializes the marker.
-	 * @throws \yii\base\InvalidConfigException
-	 */
-	public function init()
-	{
-		parent::init();
-		if (empty($this->latLon)) {
-			throw new InvalidConfigException("'latLon' attribute cannot be empty.");
-		}
-	}
+    /**
+     * Initializes the marker.
+     * @throws \yii\base\InvalidConfigException
+     */
+    public function init()
+    {
+        parent::init();
+        if (empty($this->latLon)) {
+            throw new InvalidConfigException("'latLon' attribute cannot be empty.");
+        }
+    }
 
-	/**
-	 * Returns the javascript ready code for the object to render
-	 * @return string
-	 */
-	function encode()
-	{
-		$latLon = $this->getLatLng()->encode();
-		$options = $this->getOptions();
-		$name = $this->name;
-		$map = $this->map;
-		$js = "L.popup($options).setLatLng($latLon).setContent('$this->content').openOn($map);";
-		if (!empty($name)) {
-			$js = "var $name = $js";
-		}
+    /**
+     * Returns the javascript ready code for the object to render
+     * @return string
+     */
+    function encode()
+    {
+        $latLon = $this->getLatLng()->encode();
+        $options = $this->getOptions();
+        $name = $this->name;
+        $map = $this->map;
+        $js = "L.popup($options).setLatLng($latLon).setContent('$this->content').openOn($map);";
+        if (!empty($name)) {
+            $js = "var $name = $js";
+        }
 
-		return new JsExpression($js);
-	}
+        return new JsExpression($js);
+    }
 } 

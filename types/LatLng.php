@@ -33,43 +33,45 @@ use yii\web\JsExpression;
  */
 class LatLng extends Type implements Arrayable
 {
-	/**
-	 * @var float the latitude in degrees.
-	 */
-	public $lat;
-	/**
-	 * @var float the longitude in degrees.
-	 */
-	public $lng;
+    /**
+     * @var float the latitude in degrees.
+     */
+    public $lat;
+    /**
+     * @var float the longitude in degrees.
+     */
+    public $lng;
 
-	/**
-	 * Initializes the object
-	 * @throws \yii\base\InvalidConfigException
-	 */
-	public function init()
-	{
-		if (empty($this->lat) || empty($this->lng)) {
-			throw new InvalidConfigException("'lat' and 'lng' attributes cannot be empty.");
-		}
-	}
+    /**
+     * Initializes the object
+     * @throws \yii\base\InvalidConfigException
+     */
+    public function init()
+    {
+        if (empty($this->lat) || empty($this->lng)) {
+            throw new InvalidConfigException("'lat' and 'lng' attributes cannot be empty.");
+        }
+    }
 
-	/**
-	 * LatLng is and object to be used
-	 * @return \yii\web\JsExpression the js initialization code of the object
-	 */
-	public function encode()
-	{
-		return new JsExpression("L.latLng($this->lat, $this->lng)"); // no semicolon
-	}
+    /**
+     * LatLng is and object to be used
+     * @return \yii\web\JsExpression the js initialization code of the object
+     */
+    public function encode()
+    {
+        return new JsExpression("L.latLng($this->lat, $this->lng)"); // no semicolon
+    }
 
-	/**
-	 * Returns the lat and lng as array
-	 * @param bool $encode whether to return the array json_encoded or raw
-	 * @return array|string
-	 */
-	public function toArray($encode = false)
-	{
-		$latLng = [$this->lat, $this->lng];
-		return $encode ? new JsExpression(Json::encode($latLng)) : $latLng;
-	}
+    /**
+     * Returns the lat and lng as array
+     *
+     * @param bool $encode whether to return the array json_encoded or raw
+     *
+     * @return array|string
+     */
+    public function toArray($encode = false)
+    {
+        $latLng = [$this->lat, $this->lng];
+        return $encode ? new JsExpression(Json::encode($latLng)) : $latLng;
+    }
 }

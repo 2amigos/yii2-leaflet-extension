@@ -1,13 +1,16 @@
 LeafLet Extension for Yii2
-======================
+==========================
 
 Extension library to display interactive maps with [LeafletJs](http://leafletjs.com/)
 
 Installation
 ------------
-The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
 
-> If you are looking for Yii 2.* version please check [its own repository](https://github.com/2amigos/yii2-leaflet-extension)
+The preferred way to install this extension is through
+[composer](http://getcomposer.org/download/).  This requires the
+[`composer-asset-plugin`](https://github.com/francoispluchino/composer-asset-plugin),
+which is also a dependency for yii2 – so if you have yii2 installed, you are
+most likely already set.
 
 Either run
 
@@ -51,10 +54,11 @@ $tileLayer = new \dosamigos\leaflet\layers\TileLayer([
 
 // now our component and we are going to configure it
 $leaflet = new \dosamigos\leaflet\LeafLet([
-    'tileLayer' => $tileLayer, // set the TileLayer
     'center' => $center, // set the center
 ]);
-$leaflet->addLayer($marker); // add the marker (addLayer is used to add different layers to our map)
+// Different layers can be added to our map using the `addLayer` function.
+$leaflet->addLayer($marker)      // add the marker
+        ->addLayer($tileLayer);  // add the tile layer
 
 // finally render the widget
 echo \dosamigos\leaflet\widgets\Map::widget(['leafLet' => $leaflet]);

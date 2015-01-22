@@ -21,21 +21,21 @@ use yii\web\JsExpression;
  */
 class CircleMarker extends Circle
 {
-	/**
-	 * Returns the javascript ready code for the object to render
-	 * @return JsExpression
-	 */
-	function encode()
-	{
-		$bounds = $this->getLatLng()->toArray(true);
-		$options = $this->getOptions();
-		$name = $this->name;
-		$map = $this->map;
-		$js = $this->bindPopupContent("L.circleMarker($bounds, $options)") . ($map !== null ? ".addTo($map);" : "");
-		if (!empty($name)) {
-			$js = "var $name = $js" . ($map !== null ? "" : ";");
-		}
-		return new JsExpression($js);
-	}
+    /**
+     * Returns the javascript ready code for the object to render
+     * @return JsExpression
+     */
+    function encode()
+    {
+        $bounds = $this->getLatLng()->toArray(true);
+        $options = $this->getOptions();
+        $name = $this->name;
+        $map = $this->map;
+        $js = $this->bindPopupContent("L.circleMarker($bounds, $options)") . ($map !== null ? ".addTo($map);" : "");
+        if (!empty($name)) {
+            $js = "var $name = $js" . ($map !== null ? "" : ";");
+        }
+        return new JsExpression($js);
+    }
 
 } 

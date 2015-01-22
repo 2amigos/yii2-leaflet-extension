@@ -19,50 +19,51 @@ use yii\web\JsExpression;
  * @link http://www.2amigos.us/
  * @package extensions\leafletjs\layers
  */
-class ImageOverlay extends Layer {
-	/**
-	 * @var string the image Url
-	 */
-	public $imageUrl;
+class ImageOverlay extends Layer
+{
+    /**
+     * @var string the image Url
+     */
+    public $imageUrl;
 
-	/**
-	 * @var LatLngBounds
-	 */
-	private $_bounds;
+    /**
+     * @var LatLngBounds
+     */
+    private $_bounds;
 
-	/**
-	 * @param LatLngBounds $bounds
-	 */
-	public function setImageBounds(LatLngBounds $bounds)
-	{
-		$this->_bounds = $bounds;
-	}
+    /**
+     * @param LatLngBounds $bounds
+     */
+    public function setImageBounds(LatLngBounds $bounds)
+    {
+        $this->_bounds = $bounds;
+    }
 
-	/**
-	 * @return LatLngBounds
-	 */
-	public function getImageBounds()
-	{
-		return $this->_bounds;
-	}
+    /**
+     * @return LatLngBounds
+     */
+    public function getImageBounds()
+    {
+        return $this->_bounds;
+    }
 
-	/**
-	 * Returns the javascript ready code for the object to render
-	 * @return \yii\web\JsExpression
-	 */
-	function encode()
-	{
-		$name = $this->name;
-		$imageUrl = $this->imageUrl;
-		$bounds = $this->getImageBounds()->encode();
-		$options = $this->getOptions();
-		$map = $this->map;
-		$js = "L.imageOverlay('$imageUrl', $bounds, $options)" . ($map !== null ? ".addTo($map);" : "");
-		if (!empty($name)) {
-			$js = "var $name = $js" . ($map !== null ? "" : ";");
-		}
+    /**
+     * Returns the javascript ready code for the object to render
+     * @return \yii\web\JsExpression
+     */
+    function encode()
+    {
+        $name = $this->name;
+        $imageUrl = $this->imageUrl;
+        $bounds = $this->getImageBounds()->encode();
+        $options = $this->getOptions();
+        $map = $this->map;
+        $js = "L.imageOverlay('$imageUrl', $bounds, $options)" . ($map !== null ? ".addTo($map);" : "");
+        if (!empty($name)) {
+            $js = "var $name = $js" . ($map !== null ? "" : ";");
+        }
 
-		return new JsExpression($js);
-	}
+        return new JsExpression($js);
+    }
 
 } 

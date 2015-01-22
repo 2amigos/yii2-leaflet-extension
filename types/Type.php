@@ -18,8 +18,8 @@ use yii\base\Component;
  */
 abstract class Type extends Component
 {
-	/**
-	 * @return string|\yii\web\JsExpression the js initialization code of the object
-	 */
-	abstract public function encode();
+    /**
+     * @return string|\yii\web\JsExpression the js initialization code of the object
+     */
+    abstract public function encode();
 }

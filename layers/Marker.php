@@ -21,53 +21,54 @@ use yii\web\JsExpression;
  */
 class Marker extends Layer
 {
-	use LatLngTrait;
-	use PopupTrait;
+    use LatLngTrait;
+    use PopupTrait;
 
-	/**
-	 * Sets the marker's icon
-	 * @param Icon $icon
-	 */
-	public function setIcon($icon) //Icon - if you force the icon as type, the makimarker wan't work...:(
-	{
-		$this->clientOptions['icon'] = $icon;
-	}
+    /**
+     * Sets the marker's icon
+     *
+     * @param Icon $icon
+     */
+    public function setIcon($icon) //Icon - if you force the icon as type, the makimarker wan't work...:(
+    {
+        $this->clientOptions['icon'] = $icon;
+    }
 
-	/**
-	 * @return \dosamigos\leaflet\types\Icon
-	 */
-	public function getIcon()
-	{
-		return isset($this->clientOptions['icon']) ? $this->clientOptions['icon'] : null;
-	}
+    /**
+     * @return \dosamigos\leaflet\types\Icon
+     */
+    public function getIcon()
+    {
+        return isset($this->clientOptions['icon']) ? $this->clientOptions['icon'] : null;
+    }
 
-	/**
-	 * Initializes the marker.
-	 * @throws \yii\base\InvalidConfigException
-	 */
-	public function init()
-	{
-		parent::init();
-		if (empty($this->latLng)) {
-			throw new InvalidConfigException("'latLng' attribute cannot be empty.");
-		}
-	}
+    /**
+     * Initializes the marker.
+     * @throws \yii\base\InvalidConfigException
+     */
+    public function init()
+    {
+        parent::init();
+        if (empty($this->latLng)) {
+            throw new InvalidConfigException("'latLng' attribute cannot be empty.");
+        }
+    }
 
-	/**
-	 * @return \yii\web\JsExpression the marker constructor string
-	 */
-	public function encode()
-	{
-		$latLon = $this->getLatLng()->toArray(true);
-		$options = $this->getOptions();
-		$name = $this->name;
-		$map = $this->map;
-		$js = $this->bindPopupContent("L.marker($latLon, $options)") . ($map !== null ? ".addTo($map);" : "");
-		if (!empty($name)) {
-			$js = "var $name = $js" . ($map !== null ? "" : ";");
-			$js .= $this->getEvents();
-		}
+    /**
+     * @return \yii\web\JsExpression the marker constructor string
+     */
+    public function encode()
+    {
+        $latLon = $this->getLatLng()->toArray(true);
+        $options = $this->getOptions();
+        $name = $this->name;
+        $map = $this->map;
+        $js = $this->bindPopupContent("L.marker($latLon, $options)") . ($map !== null ? ".addTo($map);" : "");
+        if (!empty($name)) {
+            $js = "var $name = $js" . ($map !== null ? "" : ";");
+            $js .= $this->getEvents();
+        }
 
-		return new JsExpression($js);
-	}
+        return new JsExpression($js);
+    }
 }

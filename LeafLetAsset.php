@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright Copyright (c) 2013 2amigOS! Consulting Group LLC
+ * @copyright Copyright (c) 2013-2015 2amigOS! Consulting Group LLC
  * @link http://2amigos.us
  * @license http://www.opensource.org/licenses/bsd-license.php New BSD License
  */
@@ -13,17 +13,17 @@ use yii\web\AssetBundle;
  *
  * ```
  *  return [
- *		// ...
- * 		'components' => [
- * 			'bundles' => [
- * 				'dosamigos\leaftlet\LeafLetAsset' => [
- * 					'sourcePath' => null,
- * 					'js' => [ 'http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js' ],
- * 					'css' => [ 'http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css' ]
- * 				]
- * 			]
- * 		]
- * 	]
+ *        // ...
+ *        'components' => [
+ *            'bundles' => [
+ *                'dosamigos\leaftlet\LeafLetAsset' => [
+ *                    'sourcePath' => null,
+ *                    'js' => [ 'http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js' ],
+ *                    'css' => [ 'http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css' ]
+ *                ]
+ *            ]
+ *        ]
+ *    ]
  * ```
  *
  * @author Antonio Ramirez <amigo.cobos@gmail.com>
@@ -33,14 +33,14 @@ use yii\web\AssetBundle;
  */
 class LeafLetAsset extends AssetBundle
 {
-	public $sourcePath = '@vendor/2amigos/yii2-leaflet-extension/assets';
+    public $sourcePath = '@bower/leaflet/dist';
 
-	public $css = [
-		'leaflet/leaflet.css'
-	];
+    public $css = [
+        'leaflet.css'
+    ];
 
-	public function init()
-	{
-		$this->js = YII_DEBUG ? ['leaflet/leaflet-src.js'] : ['leaflet/leaflet.js'];
-	}
+    public function init()
+    {
+        $this->js = YII_DEBUG ? ['leaflet-src.js'] : ['leaflet.js'];
+    }
 }

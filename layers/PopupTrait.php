@@ -15,28 +15,30 @@ namespace dosamigos\leaflet\layers;
 
 trait PopupTrait
 {
-	/**
-	 * @var string the HTML content of the popup to display when clicking on the marker.
-	 */
-	public $popupContent;
-	/**
-	 * @var bool whether to open the popup dialog on display.
-	 */
-	public $openPopup = false;
+    /**
+     * @var string the HTML content of the popup to display when clicking on the marker.
+     */
+    public $popupContent;
+    /**
+     * @var bool whether to open the popup dialog on display.
+     */
+    public $openPopup = false;
 
-	/**
-	 * Binds popup content (if any) to the js code to register
-	 * @param string $js
-	 * @return string
-	 */
-	protected function bindPopupContent($js)
-	{
-		if (!empty($this->popupContent)) {
-			$js .= ".bindPopup('$this->popupContent')";
-			if ($this->openPopup) {
-				$js .= ".openPopup()";
-			}
-		}
-		return $js;
-	}
+    /**
+     * Binds popup content (if any) to the js code to register
+     *
+     * @param string $js
+     *
+     * @return string
+     */
+    protected function bindPopupContent($js)
+    {
+        if (!empty($this->popupContent)) {
+            $js .= ".bindPopup('$this->popupContent')";
+            if ($this->openPopup) {
+                $js .= ".openPopup()";
+            }
+        }
+        return $js;
+    }
 } 
