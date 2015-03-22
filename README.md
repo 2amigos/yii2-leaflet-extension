@@ -1,6 +1,12 @@
 LeafLet Extension for Yii2
 ==========================
 
+[![Latest Version](https://img.shields.io/github/tag/2amigos/yii2-leaflet-extension.svg?style=flat-square&label=release)](https://github.com/2amigos/yii2-leaflet-extension/tags)
+[![Software License](https://img.shields.io/badge/license-BSD-brightgreen.svg?style=flat-square)](LICENSE.md)
+[![Build Status](https://img.shields.io/travis/2amigos/yii2-leaflet-extension/master.svg?style=flat-square)](https://travis-ci.org/2amigos/yii2-leaflet-extension)
+[![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/2amigos/yii2-leaflet-extension.svg?style=flat-square)](https://scrutinizer-ci.com/g/2amigos/yii2-leaflet-extension/code-structure)
+[![Total Downloads](https://img.shields.io/packagist/dt/2amigos/yii2-leaflet-extension.svg?style=flat-square)](https://packagist.org/packages/2amigos/yii2-leaflet-extension)
+
 Extension library to display interactive maps with [LeafletJs](http://leafletjs.com/)
 
 Installation
@@ -15,12 +21,12 @@ most likely already set.
 Either run
 
 ```
-php composer.phar require "2amigos/yii2-leaflet-extension" "*"
+composer require 2amigos/yii2-leaflet-extension:~1.0
 ```
 or add
 
 ```json
-"2amigos/yii2-leaflet-extension" : "*"
+"2amigos/yii2-leaflet-extension" : "~1.0"
 ```
 
 to the require section of your application's `composer.json` file.
@@ -67,14 +73,46 @@ echo \dosamigos\leaflet\widgets\Map::widget(['leafLet' => $leaflet]);
 // echo $leaflet->widget();
 ```
 
+Testing
+-------
+
+To test the extension, is better to clone this repository on your computer. After, go to the extensions folder and do
+the following (assuming you have `composer` installed on your computer): 
+
+```bash 
+$ composer install --no-interaction --prefer-source --dev
+```
+Once all required libraries are installed then do: 
+
+```bash 
+$ vendor/bin/phpunit
+```
+
 Further Information
 -------------------
 
 For further information regarding the multiple settings of LeafLetJS library please visit
 [its API reference](http://leafletjs.com/reference.html)
 
+Contributing
+------------
+
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+
+Credits
+-------
+
+- [Antonio Ramirez](https://github.com/tonydspaniard)
+- [All Contributors](../../contributors)
+
+License
+-------
+
+The BSD License (BSD). Please see [License File](LICENSE.md) for more information.
+
 
 > [![2amigOS!](http://www.gravatar.com/avatar/55363394d72945ff7ed312556ec041e0.png)](http://www.2amigos.us)
 
-<i>Web development has never been so fun!</i>
+> [![2amigOS!](http://www.gravatar.com/avatar/55363394d72945ff7ed312556ec041e0.png)](http://www.2amigos.us)  
+<i>Web development has never been so fun!</i>  
 [www.2amigos.us](http://www.2amigos.us)

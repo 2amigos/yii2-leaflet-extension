@@ -1,0 +1,1 @@
+L.control.layers({"mqcdn":L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg', {})}, {"cities":L.layerGroup([L.marker([39.61,-105.02], {}),L.marker([39.74,-104.99], {})])}, {"position":"topright"}).addTo(mapName);

@@ -1,0 +1,3 @@
+var l4 = L.marker([39.61,-105.02], {});
+var l5 = L.marker([39.74,-104.99], {});
+L.featureGroup([l4,l5]).on('click', function(e){ console.log(e); }).addTo(testMap);
