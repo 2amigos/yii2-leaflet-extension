@@ -7,7 +7,6 @@
 namespace dosamigos\leaflet\layers;
 
 
-use dosamigos\leaflet\LeafLet;
 use yii\base\Component;
 use yii\base\InvalidParamException;
 use yii\helpers\ArrayHelper;
