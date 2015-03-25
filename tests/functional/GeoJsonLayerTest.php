@@ -4,6 +4,9 @@ namespace tests;
 
 use dosamigos\leaflet\layers\GeoJson;
 
+/**
+ * @group layers
+ */
 class GeoJsonLayerTest extends TestCase
 {
     public function testEncode()

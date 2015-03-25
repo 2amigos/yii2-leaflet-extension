@@ -59,13 +59,20 @@ abstract class Layer extends Component
     public function getEvents()
     {
         $js = [];
-        if (!empty($this->name) && !empty($this->clientEvents)) {
-            $name = $this->name;
-            foreach ($this->clientEvents as $event => $handler) {
-                $js[] = "$name.on('$event', $handler);";
+        if (!empty($this->clientEvents)) {
+            if (!empty($this->name)) {
+                $name = $this->name;
+                $js[] = "{$name}";
+                foreach ($this->clientEvents as $event => $handler) {
+                    $js[] = ".on('$event', $handler)";
+                }
+            } else {
+                foreach ($this->clientEvents as $event => $handler) {
+                    $js[] = ".on('$event', $handler)";
+                }
             }
         }
-        return !empty($js) ? implode("\n", $js) : "";
+        return !empty($js) ? implode("", $js) . ($this->name !== null ? ";" : "") : "";
     }
 
     /**

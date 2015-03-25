@@ -63,11 +63,11 @@ class Marker extends Layer
         $options = $this->getOptions();
         $name = $this->name;
         $map = $this->map;
-        $js = $this->bindPopupContent("L.marker($latLon, $options)") . ($map !== null ? ".addTo($map);" : "");
+        $js = $this->bindPopupContent("L.marker($latLon, $options)") . ($map !== null ? ".addTo($map)" : "");
         if (!empty($name)) {
-            $js = "var $name = $js" . ($map !== null ? "" : ";");
-            $js .= $this->getEvents();
+            $js = "var $name = $js;";
         }
+        $js .= $this->getEvents() . ($map !== null && empty($name)? ";" : "");
 
         return new JsExpression($js);
     }

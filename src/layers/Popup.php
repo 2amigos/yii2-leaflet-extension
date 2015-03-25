@@ -34,7 +34,7 @@ class Popup extends Layer
     public function init()
     {
         parent::init();
-        if (empty($this->latLon)) {
+        if (empty($this->latLng)) {
             throw new InvalidConfigException("'latLon' attribute cannot be empty.");
         }
     }

@@ -2,8 +2,6 @@
 
 namespace tests;
 
-
-use dosamigos\leaflet\layers\Circle;
 use dosamigos\leaflet\layers\FeatureGroup;
 use dosamigos\leaflet\layers\Marker;
 use dosamigos\leaflet\types\LatLng;
@@ -22,9 +20,9 @@ class FeatureGroupLayerTest extends TestCase
         $group->addLayer($littleton);
         $group->addLayer($denver);
 
-        $expected = $group->encode();
+        $actual = $group->encode();
 
-        $this->assertEquals(file_get_contents(__DIR__ . '/data/featureGroup-layer.bin'), $expected);
+        $this->assertEquals(file_get_contents(__DIR__ . '/data/featureGroup-layer.bin'), $actual);
 
     }
 
@@ -36,9 +34,9 @@ class FeatureGroupLayerTest extends TestCase
         $group->addLayer($littleton);
         $group->addLayer($denver);
 
-        $expected = $group->encode();
+        $actual = $group->encode();
 
-        $this->assertEquals(file_get_contents(__DIR__ . '/data/featureGroup-layer-with-name.bin'), $expected);
+        $this->assertEquals(file_get_contents(__DIR__ . '/data/featureGroup-layer-with-name.bin'), $actual);
     }
 
     public function testEncodeWithMapAndEvents() {
@@ -51,9 +49,9 @@ class FeatureGroupLayerTest extends TestCase
         $group->addLayer($littleton);
         $group->addLayer($denver);
 
-        $expected = $group->encode();
+        $actual = $group->encode();
 
-        $this->assertEquals(file_get_contents(__DIR__ . '/data/featureGroup-layer-with-map-and-events.bin'), $expected);
+        $this->assertEquals(file_get_contents(__DIR__ . '/data/featureGroup-layer-with-map-and-events.bin'), $actual);
     }
 
     public function testOneLineEncode() {
@@ -64,8 +62,8 @@ class FeatureGroupLayerTest extends TestCase
         $group->addLayer($littleton);
         $group->addLayer($denver);
 
-        $expected = $group->oneLineEncode();
+        $actual = $group->oneLineEncode();
 
-        $this->assertEquals('L.featureGroup([L.marker([39.61,-105.02], {}),L.marker([39.74,-104.99], {})]).addTo(testMap);', $expected);
+        $this->assertEquals('L.featureGroup([L.marker([39.61,-105.02], {}),L.marker([39.74,-104.99], {})]).addTo(testMap);', $actual);
     }
 }

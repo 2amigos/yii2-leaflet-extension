@@ -34,11 +34,12 @@ trait PopupTrait
     protected function bindPopupContent($js)
     {
         if (!empty($this->popupContent)) {
-            $js .= ".bindPopup('$this->popupContent')";
+            $content = addslashes($this->popupContent);
+            $js .= ".bindPopup(\"{$content}\")";
             if ($this->openPopup) {
                 $js .= ".openPopup()";
             }
         }
         return $js;
     }
-} 
+}
