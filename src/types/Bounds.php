@@ -20,7 +20,7 @@ use yii\web\JsExpression;
  * @link http://www.2amigos.us/
  * @package dosamigos\leaflet\types
  */
-class Bounds extends Type implements Arrayable
+class Bounds extends Type implements ArrayableInterface
 {
 
     /**

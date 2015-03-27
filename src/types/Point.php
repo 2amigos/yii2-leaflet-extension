@@ -25,7 +25,7 @@ use yii\web\JsExpression;
  * @link http://www.2amigos.us/
  * @package dosamigos\leaflet\types
  */
-class Point extends Type implements Arrayable
+class Point extends Type implements ArrayableInterface
 {
     /**
      * @var float x coordinate

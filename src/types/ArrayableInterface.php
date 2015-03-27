@@ -13,7 +13,7 @@ namespace dosamigos\leaflet\types;
  *
  * @package dosamigos\leaflet\types
  */
-interface Arrayable
+interface ArrayableInterface
 {
     /**
      * Converts the object into an array.

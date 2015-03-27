@@ -31,7 +31,7 @@ use yii\web\JsExpression;
  * @link http://www.2amigos.us/
  * @package dosamigos\leaflet\types
  */
-class LatLng extends Type implements Arrayable
+class LatLng extends Type implements ArrayableInterface
 {
     /**
      * @var float the latitude in degrees.
