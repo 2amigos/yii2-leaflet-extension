@@ -198,7 +198,6 @@ class Icon extends Type
     public function getOptions()
     {
         $options = [];
-        echo __CLASS__;
         $class = new \ReflectionClass(__CLASS__);
         foreach ($class->getProperties(\ReflectionProperty::IS_PUBLIC) as $property) {
             if (!$property->isStatic()) {
