@@ -37,9 +37,9 @@ class PolyLine extends Layer
      *
      * @throws \yii\base\InvalidParamException
      */
-    public function setLatLngs($latLngs)
+    public function setLatLngs(array $latLngs)
     {
-        foreach ((array)$latLngs as $latLng) {
+        foreach ($latLngs as $latLng) {
             if (!($latLng instanceof LatLng)) {
                 throw new InvalidParamException("Wrong parameter. All items should be of type LatLng.");
             }
