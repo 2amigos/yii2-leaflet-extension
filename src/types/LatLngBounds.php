@@ -7,6 +7,7 @@
 namespace dosamigos\leaflet\types;
 
 use yii\base\InvalidConfigException;
+use yii\base\InvalidParamException;
 use yii\web\JsExpression;
 
 /**
@@ -102,5 +103,44 @@ class LatLngBounds extends Type
             $js = "var $this->name = $js;\n";
         }
         return new JsExpression($js);
+    }
+
+    /**
+     * Finds bounds of an array of LatLng instances
+     *
+     * @param LatLng[] $latLngs
+     * @param int $margin
+     *
+     * @return LatLngBounds
+     */
+    public static function getBoundsOfLatLngs(array $latLngs, $margin = 0)
+    {
+        $min_lat = 1000;
+        $max_lat = -1000;
+        $min_lng = 1000;
+        $max_lng = -1000;
+        foreach ($latLngs as $latLng) {
+            if (!($latLng instanceof LatLng)) {
+                throw new InvalidParamException('"$latLngs" should be an array of LatLng instances.');
+            }
+            /* @var $coord LatLng */
+            $min_lat = min($min_lat, $latLng->lat);
+            $max_lat = max($max_lat, $latLng->lat);
+            $min_lng = min($min_lng, $latLng->lng);
+            $max_lng = max($max_lng, $latLng->lng);
+        }
+        if ($margin > 0) {
+            $min_lat = $min_lat - $margin * ($max_lat - $min_lat);
+            $min_lng = $min_lng - $margin * ($max_lng - $min_lng);
+            $max_lat = $max_lat + $margin * ($max_lat - $min_lat);
+            $max_lng = $max_lng + $margin * ($max_lng - $min_lng);
+        }
+        $bounds = new LatLngBounds(
+            [
+                'southWest' => new LatLng(['lat' => $min_lat, 'lng' => $min_lng]),
+                'northEast' => new LatLng(['lat' => $max_lat, 'lng' => $max_lng])
+            ]
+        );
+        return $bounds;
     }
 }
