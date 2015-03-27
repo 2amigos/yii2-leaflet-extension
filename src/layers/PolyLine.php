@@ -44,8 +44,8 @@ class PolyLine extends Layer
                 throw new InvalidParamException("Wrong parameter. All items should be of type LatLng.");
             }
         }
-        $this->setBounds();
         $this->_latLngs = $latLngs;
+        $this->setBounds();
     }
 
     /**
@@ -83,17 +83,18 @@ class PolyLine extends Layer
      */
     protected function setBounds()
     {
-        foreach ($this->getLatLngs() as $latLng) {
-            if (empty($this->_bounds)) {
-                $this->_bounds = new LatLngBounds(['southWest' => $latLng, 'northEast' => $latLng]);
-            } else {
-                $this->_bounds->getSouthWest()->lat = min($latLng->lat, $this->_bounds->getSouthWest()->lat);
-                $this->_bounds->getSouthWest()->lng = min($latLng->lng, $this->_bounds->getSouthWest()->lng);
-
-                $this->_bounds->getNorthEast()->lat = min($latLng->lat, $this->_bounds->getNorthEast()->lat);
-                $this->_bounds->getNorthEast()->lng = min($latLng->lng, $this->_bounds->getNorthEast()->lng);
-            }
-        }
+        $this->_bounds = LatLngBounds::getBoundsOfLatLngs($this->getLatLngs());
+//        foreach ($this->getLatLngs() as $latLng) {
+//            if (empty($this->_bounds)) {
+//                $this->_bounds = new LatLngBounds(['southWest' => $latLng, 'northEast' => $latLng]);
+//            } else {
+//                $this->_bounds->getSouthWest()->lat = min($latLng->lat, $this->_bounds->getSouthWest()->lat);
+//                $this->_bounds->getSouthWest()->lng = min($latLng->lng, $this->_bounds->getSouthWest()->lng);
+//
+//                $this->_bounds->getNorthEast()->lat = max($latLng->lat, $this->_bounds->getNorthEast()->lat);
+//                $this->_bounds->getNorthEast()->lng = max($latLng->lng, $this->_bounds->getNorthEast()->lng);
+//            }
+//        }
     }
 
     /**
