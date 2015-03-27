@@ -49,9 +49,9 @@ class Popup extends Layer
         $options = $this->getOptions();
         $name = $this->name;
         $map = $this->map;
-        $js = "L.popup($options).setLatLng($latLon).setContent('$this->content').openOn($map);";
+        $js = "L.popup($options).setLatLng($latLon).setContent('$this->content')" . ($map !== null ? ".addTo($map);" : "");
         if (!empty($name)) {
-            $js = "var $name = $js";
+            $js = "var $name = $js" . ($map !== null ? "" : ";");
         }
 
         return new JsExpression($js);
