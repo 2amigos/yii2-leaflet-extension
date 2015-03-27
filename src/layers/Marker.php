@@ -29,7 +29,7 @@ class Marker extends Layer
      *
      * @param Icon $icon
      */
-    public function setIcon($icon) //Icon - if you force the icon as type, the makimarker wan't work...:(
+    public function setIcon($icon) //Icon - if you force the icon as type, the makimarker won't work...:(
     {
         $this->clientOptions['icon'] = $icon;
     }
