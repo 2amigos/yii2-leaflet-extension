@@ -38,9 +38,10 @@ class Polygon extends PolyLine
         $latLngs = Json::encode($this->getLatLngstoArray());
         $options = $this->getOptions();
         $name = $this->name;
-        $js = $this->bindPopupContent("L.polygon($latLngs, $options)");
+        $map = $this->map;
+        $js = $this->bindPopupContent("L.polygon($latLngs, $options)") . ($map !== null ? ".addTo($map);" : "");
         if (!empty($name)) {
-            $js = "var $name = $js;";
+            $js = "var $name = $js" . ($map !== null ? "" : ";");
         }
         return new JsExpression($js);
     }
