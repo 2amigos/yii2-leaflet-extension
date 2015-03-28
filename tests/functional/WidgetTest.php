@@ -23,6 +23,7 @@ class WidgetTest extends TestCase
         $view = \Yii::$app->getView();
         $content = $view->render('//map-widget');
         $actual = $view->render('//layouts/main', ['content' => $content]);
+
         $expected = file_get_contents(__DIR__ . '/data/test-map-widget.bin');
         $this->assertEquals($expected, $actual);
     }

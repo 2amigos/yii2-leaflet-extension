@@ -96,9 +96,9 @@ class LeafLet extends Component
      *
      * @throws \yii\base\InvalidParamException
      */
-    public function setControls($controls)
+    public function setControls(array $controls)
     {
-        foreach ((array)$controls as $control) {
+        foreach ($controls as $control) {
             if (!($control instanceof Control)) {
                 throw new InvalidParamException("All controls must be of type Control.");
             }
@@ -166,7 +166,18 @@ class LeafLet extends Component
      */
     public function setJs($js)
     {
-        $this->_js = is_array($js) ? $js : (array)$js;
+        $this->_js = is_array($js) ? $js : [$js];
+        return $this;
+    }
+
+    /**
+     * @param string $js appends javascript code to be registered.
+     *
+     * @return static the component itself
+     */
+    public function appendJs($js)
+    {
+        $this->_js[] = $js;
         return $this;
     }
 
@@ -314,17 +325,6 @@ class LeafLet extends Component
     public function clearLayerGroups()
     {
         $this->_layerGroups = null;
-        return $this;
-    }
-
-    /**
-     * @param string $js appends javascript code to be registered.
-     *
-     * @return static the component itself
-     */
-    public function appendJs($js)
-    {
-        $this->_js[] = $js;
         return $this;
     }
 

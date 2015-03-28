@@ -100,7 +100,6 @@ class LayersControlTest extends TestCase
 
         $expected = Json::encode($layers->encode());
 
-        file_put_contents(__DIR__ . '/data/layers-control-no-map.bin', $expected);
         $this->assertEquals(file_get_contents(__DIR__ . '/data/layers-control-no-map.bin'), $expected);
     }
 

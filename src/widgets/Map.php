@@ -60,7 +60,9 @@ class Map extends Widget
             $styles[] = "height:{$this->height}px";
             $this->options['style'] = implode(";", array_filter($styles));
         } else {
+            // @codeCoverageIgnoreStart
             $this->options['style'] = "height:{$this->height}px;";
+            // @codeCoverageIgnoreEnd
         }
     }
 

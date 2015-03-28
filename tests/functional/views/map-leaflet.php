@@ -3,8 +3,9 @@ use dosamigos\leaflet\layers\Marker;
 use dosamigos\leaflet\layers\TileLayer;
 use dosamigos\leaflet\LeafLet;
 use dosamigos\leaflet\types\LatLng;
-use dosamigos\leaflet\widgets\Map;
 use yii\web\JsExpression;
+use tests\TestPlugin;
+
 /* @var $this yii\web\View */
 ?>
 
@@ -42,10 +43,14 @@ $leaflet = new LeafLet(
 $leaflet->addLayer($marker)// add the marker
 ->setTileLayer($tileLayer);  // add the tile layer
 
+$plugin = new TestPlugin(['name' => 'test']);
+
+$leaflet->installPlugin($plugin);
+
+$leaflet->getPlugins()->registerAssetBundles($this);
 // finally render the widget
-echo Map::widget(
+echo $leaflet->widget(
     [
-        'leafLet' => $leaflet,
         'options' => [
             'style' => 'color:#000;'
         ],

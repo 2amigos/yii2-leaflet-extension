@@ -1,0 +1,8 @@
+var test = null;
+var appendedJs = null;
+map.addLayer(L.polygon([[39.61,-105.02],[39.73,-104.88],[39.74,-104.99]], {}), true);
+var l27 = L.marker([39.61,-105.02], {});
+var l28 = L.marker([39.74,-104.99], {});
+L.layerGroup([l27,l28]).addTo(map);
+var testPlugin = L.TestPlugin();
+testPlugin.on('click', function(e){ console.log(e); });
