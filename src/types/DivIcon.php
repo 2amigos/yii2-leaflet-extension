@@ -100,7 +100,7 @@ class DivIcon extends Type
 
         $js = "L.divIcon($options)";
         if ($this->name) {
-            $js = "var $this->name = $js;\n";
+            $js = "var $this->name = $js;";
         }
         return new JsExpression($js);
     }
@@ -114,18 +114,16 @@ class DivIcon extends Type
         $class = new \ReflectionClass(__CLASS__);
         foreach ($class->getProperties(\ReflectionProperty::IS_PUBLIC) as $property) {
             if (!$property->isStatic()) {
-                $names[] = $property->getName();
+                $name = $property->getName();
+                $options[$name] = $this->$name;
             }
         }
-        foreach ($class->getMethods(\ReflectionMethod::IS_PUBLIC) as $method) {
-            if (substr($method->name, 0, 3) == 'get') {
-                $name = strtolower(substr($method->name, 3, 1)) . substr($method->name, 4);
-                $point = $method->invoke($this);
-                if ($point instanceof Point) {
-                    $options[$name] = $point->encode();
-                }
+        foreach (['iconSize', 'iconAnchor'] as $property) {
+            $point = $this->$property;
+            if ($point instanceof Point) {
+                $options[$property] = $point->toArray(true);
             }
         }
-        return $options;
+        return array_filter($options);
     }
 }

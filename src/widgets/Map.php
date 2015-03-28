@@ -58,7 +58,7 @@ class Map extends Widget
         if ($inlineStyles) {
             $styles = explode(';', $inlineStyles);
             $styles[] = "height:{$this->height}px";
-            $this->options['style'] = implode(";", $styles);
+            $this->options['style'] = implode(";", array_filter($styles));
         } else {
             $this->options['style'] = "height:{$this->height}px;";
         }
@@ -90,15 +90,13 @@ class Map extends Widget
         $js = $this->leafLet->getJs();
 
         $clientOptions = $this->leafLet->clientOptions;
-        if ($clientOptions !== false) {
-            $options = empty($clientOptions) ? '{}' : Json::encode($clientOptions);
-            array_unshift($js, "var $name = L.map('$id', $options);");
-            if ($this->leafLet->getTileLayer() !== null) {
-                $js[] = $this->leafLet->getTileLayer()->encode();
-            }
-        } else {
-            return;
+
+        $options = empty($clientOptions) ? '{}' : Json::encode($clientOptions);
+        array_unshift($js, "var $name = L.map('$id', $options);");
+        if ($this->leafLet->getTileLayer() !== null) {
+            $js[] = $this->leafLet->getTileLayer()->encode();
         }
+
         $clientEvents = $this->leafLet->clientEvents;
 
         if (!empty($clientEvents)) {

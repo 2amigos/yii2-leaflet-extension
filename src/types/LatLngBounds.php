@@ -100,7 +100,7 @@ class LatLngBounds extends Type
         $northEast = $this->getNorthEast()->toArray(true);
         $js = "L.latLngBounds($southWest, $northEast)";
         if (!empty($this->name)) {
-            $js = "var $this->name = $js;\n";
+            $js = "var $this->name = $js;";
         }
         return new JsExpression($js);
     }

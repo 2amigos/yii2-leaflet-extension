@@ -187,7 +187,7 @@ class Icon extends Type
 
         $js = "L.icon($options)";
         if ($this->name) {
-            $js = "var $this->name = $js;\n";
+            $js = "var $this->name = $js;";
         }
         return new JsExpression($js);
     }
@@ -205,12 +205,11 @@ class Icon extends Type
                 $options[$name] = $this->$name;
             }
         }
-        foreach (['iconSize', 'popupAnchor', 'shadowAnchor', 'shadowSize'] as $property) {
+        foreach (['iconAnchor', 'iconSize', 'popupAnchor', 'shadowAnchor', 'shadowSize'] as $property) {
             $point = $this->$property;
             if ($point instanceof Point) {
                 $options[$property] = $point->toArray(true);
             }
-
         }
         return array_filter($options);
     }
