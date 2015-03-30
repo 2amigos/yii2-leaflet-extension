@@ -11,6 +11,7 @@
         "maps",
         "leaflet"
     ],
+    "homepage": "http://yiiwheels.com/extension/leaflet-extension-library",
     "license": "BSD-3-Clause",
     "authors": [
         {
