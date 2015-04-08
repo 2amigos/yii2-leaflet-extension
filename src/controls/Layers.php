@@ -111,7 +111,6 @@ class Layers extends Control
      */
     public function encode()
     {
-        $js = [];
         $this->clientOptions['position'] = $this->position;
         $layers = $this->getEncodedBaseLayers();
         $overlays = $this->getEncodedOverlays();
