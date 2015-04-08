@@ -48,7 +48,7 @@ class LatLng extends Type implements ArrayableInterface
      */
     public function init()
     {
-        if (empty($this->lat) || empty($this->lng)) {
+        if ($this->lat === null || $this->lng === null) {
             throw new InvalidConfigException("'lat' and 'lng' attributes cannot be empty.");
         }
     }
