@@ -20,6 +20,9 @@ use yii\web\JsExpression;
  * @link http://www.2amigos.us/
  * @package dosamigos\leaflet\layers
  */
+/**
+ * @property string $name
+ */
 class Circle extends Layer
 {
     use LatLngTrait;
@@ -34,7 +37,7 @@ class Circle extends Layer
      * Returns the javascript ready code for the object to render
      * @return JsExpression
      */
-    function encode()
+    public function encode()
     {
         $bounds = $this->getLatLng()->toArray(true);
         $radius = $this->radius;

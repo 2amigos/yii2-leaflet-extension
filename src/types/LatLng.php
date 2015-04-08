@@ -67,7 +67,7 @@ class LatLng extends Type implements ArrayableInterface
      *
      * @param bool $encode whether to return the array json_encoded or raw
      *
-     * @return array|string
+     * @return array|JsExpression
      */
     public function toArray($encode = false)
     {

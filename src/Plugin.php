@@ -10,6 +10,18 @@ namespace dosamigos\leaflet;
 use yii\base\Component;
 use yii\helpers\Json;
 
+/**
+ * @property string $name
+ */
+
+/**
+ * Plugin is the abstract class where all plugins should extend from
+ *
+ * @author Antonio Ramirez <amigo.cobos@gmail.com>
+ * @link http://www.ramirezcobos.com/
+ * @link http://www.2amigos.us/
+ * @package dosamigos\leaflet
+ */
 abstract class Plugin extends Component
 {
     /**

@@ -81,5 +81,5 @@ abstract class Layer extends Component
      * Returns the javascript ready code for the object to render
      * @return \yii\web\JsExpression
      */
-    abstract function encode();
+    abstract public function encode();
 }

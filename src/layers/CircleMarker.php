@@ -19,13 +19,16 @@ use yii\web\JsExpression;
  * @link http://www.2amigos.us/
  * @package dosamigos\leaflet\layers
  */
+/**
+ * @property string $name
+ */
 class CircleMarker extends Circle
 {
     /**
      * Returns the javascript ready code for the object to render
      * @return JsExpression
      */
-    function encode()
+    public function encode()
     {
         $bounds = $this->getLatLng()->toArray(true);
         $options = $this->getOptions();

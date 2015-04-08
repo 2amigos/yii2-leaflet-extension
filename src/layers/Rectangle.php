@@ -19,6 +19,11 @@ use yii\web\JsExpression;
  * @link http://www.2amigos.us/
  * @package dosamigos\leaflet\layers
  */
+/**
+ * @property string $name
+ * @property string $popupContent
+ * @property bool $openPopup
+ */
 class Rectangle extends Layer
 {
     use PopupTrait;
@@ -49,7 +54,7 @@ class Rectangle extends Layer
      * Returns the javascript ready code for the object to render
      * @return string
      */
-    function encode()
+    public function encode()
     {
         $bounds = $this->getBounds()->encode();
         $options = $this->getOptions();

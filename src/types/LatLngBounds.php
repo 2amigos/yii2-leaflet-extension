@@ -19,6 +19,11 @@ use yii\web\JsExpression;
  * @link http://www.2amigos.us/
  * @package dosamigos\leaflet\types
  */
+
+/**
+ * @property LatLng $southWest
+ * @property LatLng $northEast
+ */
 class LatLngBounds extends Type
 {
     /**

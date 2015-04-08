@@ -22,6 +22,11 @@ use yii\helpers\ArrayHelper;
  * Class LeafLet
  * @package dosamigos\leaflet
  */
+
+/**
+ * @property LatLng $center
+ *
+ */
 class LeafLet extends Component
 {
     /**
@@ -324,7 +329,7 @@ class LeafLet extends Component
      */
     public function clearLayerGroups()
     {
-        $this->_layerGroups = null;
+        $this->_layerGroups = [];
         return $this;
     }
 

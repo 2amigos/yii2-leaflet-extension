@@ -19,6 +19,11 @@ use yii\web\JsExpression;
  * @see http://leafletjs.com/reference.html#polyline
  * @package dosamigos\leaflet\layers
  */
+/**
+ * @property string $name
+ * @property string $popupContent
+ * @property bool $openPopup
+ */
 class PolyLine extends Layer
 {
     use PopupTrait;
@@ -90,7 +95,7 @@ class PolyLine extends Layer
      * Returns the javascript ready code for the object to render
      * @return string
      */
-    function encode()
+    public function encode()
     {
         $latLngs = Json::encode($this->getLatLngstoArray());
         $options = $this->getOptions();

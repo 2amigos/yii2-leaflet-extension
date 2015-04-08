@@ -64,7 +64,7 @@ class TileLayer extends Layer
     public function encode()
     {
         $options = $this->getOptions();
-        $name = $this->name;
+        $name = $this->getName();
         $map = $this->map;
         $js = "L.tileLayer('$this->urlTemplate', $options)" . ($map !== null ? ".addTo($map);" : "");
         if (!empty($name)) {

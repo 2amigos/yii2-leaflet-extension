@@ -19,6 +19,9 @@ use yii\web\JsExpression;
  * @link http://www.2amigos.us/
  * @package extensions\leafletjs\layers
  */
+/**
+ * @property string $name
+ */
 class ImageOverlay extends Layer
 {
     /**
@@ -51,7 +54,7 @@ class ImageOverlay extends Layer
      * Returns the javascript ready code for the object to render
      * @return \yii\web\JsExpression
      */
-    function encode()
+    public function encode()
     {
         $name = $this->name;
         $imageUrl = $this->imageUrl;

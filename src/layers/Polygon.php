@@ -19,6 +19,9 @@ use yii\web\JsExpression;
  * @link http://www.2amigos.us/
  * @package dosamigos\leaflet\layers
  */
+/**
+ * @property string $name
+ */
 class Polygon extends PolyLine
 {
 
@@ -33,7 +36,7 @@ class Polygon extends PolyLine
      * To add a Polygon to the map, you need to use the special method [[LetLeaf::addPolygon]].
      * @return string
      */
-    function encode()
+    public function encode()
     {
         $latLngs = Json::encode($this->getLatLngstoArray());
         $options = $this->getOptions();

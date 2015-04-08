@@ -20,6 +20,9 @@ use yii\web\JsExpression;
  * @link http://www.2amigos.us/
  * @package dosamigos\leaflet\layers
  */
+/**
+ * @property string $name
+ */
 class FeatureGroup extends LayerGroup
 {
     use PopupTrait;
@@ -38,7 +41,7 @@ class FeatureGroup extends LayerGroup
     {
         $js = [];
         $layers = $this->getLayers();
-        $name = $this->getName();
+        $name = $this->name;
         $names = str_replace(array('"', "'"), "", Json::encode(array_keys($layers)));
         $map = $this->map;
         foreach ($layers as $layer) {
@@ -63,7 +66,7 @@ class FeatureGroup extends LayerGroup
         $layersJs = [];
         /** @var \dosamigos\leaflet\layers\Layer $layer */
         foreach ($layers as $layer) {
-            $layer->name = null;
+            $layer->setName(null);
             $layersJs[] = $layer->encode();
         }
         $js = "L.featureGroup([" . implode(",", $layersJs) . "])" .

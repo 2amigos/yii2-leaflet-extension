@@ -7,7 +7,6 @@
 
 namespace dosamigos\leaflet\types;
 
-
 use yii\base\InvalidConfigException;
 use yii\helpers\Json;
 use yii\web\JsExpression;
@@ -66,7 +65,7 @@ class Point extends Type implements ArrayableInterface
      *
      * @param bool $encode whether to return the array json_encoded or raw
      *
-     * @return array|string
+     * @return array|JsExpression
      */
     public function toArray($encode = false)
     {

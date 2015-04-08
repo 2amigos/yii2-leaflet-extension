@@ -99,6 +99,9 @@ class Layers extends Control
     public function getEncodedOverlays()
     {
         $overlays = [];
+        /**
+         * @var \dosamigos\leaflet\layers\LayerGroup $overlay
+         */
         foreach ($this->getOverlays() as $key => $overlay) {
             $overlays[$key] = $overlay->oneLineEncode();
         }

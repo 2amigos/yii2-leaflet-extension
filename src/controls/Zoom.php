@@ -29,7 +29,7 @@ class Zoom extends Control
     {
         $this->clientOptions['position'] = $this->position;
         $options = $this->getOptions();
-        $name = $this->name;
+        $name = $this->getName();
         $map = $this->map;
         $js = "L.control.zoom($options)" . ($map !== null ? ".addTo($map);" : "");
         if (!empty($name)) {

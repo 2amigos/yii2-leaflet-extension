@@ -14,6 +14,8 @@ use yii\helpers\Json;
 /**
  * Control is the base class for all Controls
  *
+ * @property string $name
+ *
  * @author Antonio Ramirez <amigo.cobos@gmail.com>
  * @link http://www.ramirezcobos.com/
  * @link http://www.2amigos.us/

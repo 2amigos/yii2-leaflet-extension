@@ -20,6 +20,11 @@ use yii\web\JsExpression;
  * @link http://www.2amigos.us/
  * @package dosamigos\leaflet\types
  */
+
+/**
+ * @property Point $min
+ * @property Point $max
+ */
 class Bounds extends Type implements ArrayableInterface
 {
 

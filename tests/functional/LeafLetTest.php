@@ -89,7 +89,7 @@ class LeafLetTest extends TestCase
         );
 
         $this->assertEquals([$group], $leafLet->addLayerGroup($group)->getLayerGroups());
-        $this->assertNull($leafLet->clearLayerGroups()->getLayerGroups());
+        $this->assertEmpty($leafLet->clearLayerGroups()->getLayerGroups());
     }
 
     public function testJs() {

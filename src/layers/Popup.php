@@ -17,6 +17,10 @@ use yii\web\JsExpression;
  * @see http://leafletjs.com/reference.html#popup
  * @package dosamigos\leaflet\layers
  */
+
+/**
+ * @property \dosamigos\leaflet\types\LatLng $latLng
+ */
 class Popup extends Layer
 {
 
@@ -43,7 +47,7 @@ class Popup extends Layer
      * Returns the javascript ready code for the object to render
      * @return string
      */
-    function encode()
+    public function encode()
     {
         $latLon = $this->getLatLng()->encode();
         $options = $this->getOptions();

@@ -19,6 +19,12 @@ use yii\web\JsExpression;
  * @link http://www.2amigos.us/
  * @package dosamigos\leaflet\layers
  */
+/**
+ * @property string $name
+ * @property \dosamigos\leaflet\types\LatLng $latLng
+ * @property string $popupContent
+ * @property bool $openPopup
+ */
 class Marker extends Layer
 {
     use LatLngTrait;
