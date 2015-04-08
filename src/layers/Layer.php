@@ -13,6 +13,8 @@ use yii\helpers\Json;
 /**
  * Layer is the base class for UI Layers
  *
+ * @property string $name
+ *
  * @package dosamigos\leaflet\layers
  */
 abstract class Layer extends Component
