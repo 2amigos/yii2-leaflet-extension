@@ -192,7 +192,7 @@ class LeafLet extends Component
      */
     public function getJs()
     {
-        $js = $this->_js;
+        $js = [];
         foreach ($this->getLayers() as $layer) {
 
             if ($layer instanceof Polygon) {
@@ -210,6 +210,7 @@ class LeafLet extends Component
         $js = ArrayHelper::merge($js, $groups);
         $js = ArrayHelper::merge($js, $controls);
         $js = ArrayHelper::merge($js, $plugins);
+        $js = ArrayHelper::merge($js, $this->_js);
         return $js;
     }
 
