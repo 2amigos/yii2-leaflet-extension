@@ -133,10 +133,6 @@ class LatLngBounds extends Type
      */
     public static function getBoundsOfLatLngs(array $latLngs, $margin = 0)
     {
-
-        $asdasdas =     12312;
-        $var = "";
-
         $min_lat = 1000;
         $max_lat = -1000;
         $min_lng = 1000;
