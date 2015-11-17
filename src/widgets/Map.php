@@ -28,11 +28,14 @@ class Map extends Widget
      * @var \dosamigos\leaflet\LeafLet component holding all configuration
      */
     public $leafLet;
+    
     /**
-     * @var int the height of the map. Failing to configure the height of the map, will result in
-     * unexpected results.
+     * @var string the height of the map with css unit.
+     * Failing to configure the height of the map, will result in unexpected results.
+     * When setting only the number, px unit will be used by default.
      */
-    public $height = 200;
+    public $height = '200px';
+    
     /**
      * @var array the HTML attributes for the widget container tag.
      */
@@ -49,6 +52,10 @@ class Map extends Widget
         if (!isset($this->options['id'])) {
             $this->options['id'] = $this->getId();
         }
+        // Height defaults to px unit
+        if (is_numeric($this->height)) {
+            $this->height .= 'px';
+        }
         if (empty($this->leafLet) || !($this->leafLet instanceof LeafLet)) {
             throw new InvalidConfigException(
                 "'leafLet' attribute cannot be empty and should be of type LeafLet component."
@@ -57,11 +64,11 @@ class Map extends Widget
         $inlineStyles = ArrayHelper::getValue($this->options, 'style');
         if ($inlineStyles) {
             $styles = explode(';', $inlineStyles);
-            $styles[] = "height:{$this->height}px";
+            $styles[] = "height:{$this->height}";
             $this->options['style'] = implode(";", array_filter($styles));
         } else {
             // @codeCoverageIgnoreStart
-            $this->options['style'] = "height:{$this->height}px;";
+            $this->options['style'] = "height:{$this->height};";
             // @codeCoverageIgnoreEnd
         }
     }
@@ -94,7 +101,7 @@ class Map extends Widget
         $clientOptions = $this->leafLet->clientOptions;
 
         $options = empty($clientOptions) ? '{}' : Json::encode($clientOptions);
-        array_unshift($js, "var $name = L.map('$id', $options);");
+        array_unshift($js, "$name = L.map('$id', $options);");
         if ($this->leafLet->getTileLayer() !== null) {
             $js[] = $this->leafLet->getTileLayer()->encode();
         }
