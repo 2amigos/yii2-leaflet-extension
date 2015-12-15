@@ -54,6 +54,10 @@ class Map extends Widget
             );
         }
 
+        if (is_numeric($this->height)) {
+            $this->height .= 'px';
+        }
+
         Html::addCssStyle($this->options, ['height' => $this->height], false);
     }
 
