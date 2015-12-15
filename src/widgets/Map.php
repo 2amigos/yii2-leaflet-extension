@@ -11,7 +11,6 @@ use dosamigos\leaflet\LeafLet;
 use dosamigos\leaflet\LeafLetAsset;
 use yii\base\InvalidConfigException;
 use yii\base\Widget;
-use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Json;
 
@@ -29,10 +28,10 @@ class Map extends Widget
      */
     public $leafLet;
     /**
-     * @var int the height of the map. Failing to configure the height of the map, will result in
+     * @var string the height of the map. Failing to configure the height of the map, will result in
      * unexpected results.
      */
-    public $height = 200;
+    public $height = '200px';
     /**
      * @var array the HTML attributes for the widget container tag.
      */
@@ -54,16 +53,8 @@ class Map extends Widget
                 "'leafLet' attribute cannot be empty and should be of type LeafLet component."
             );
         }
-        $inlineStyles = ArrayHelper::getValue($this->options, 'style');
-        if ($inlineStyles) {
-            $styles = explode(';', $inlineStyles);
-            $styles[] = "height:{$this->height}px";
-            $this->options['style'] = implode(";", array_filter($styles));
-        } else {
-            // @codeCoverageIgnoreStart
-            $this->options['style'] = "height:{$this->height}px;";
-            // @codeCoverageIgnoreEnd
-        }
+
+        Html::addCssStyle($this->options, ['height' => $this->height], false);
     }
 
     /**
