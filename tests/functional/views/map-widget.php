@@ -47,6 +47,7 @@ echo Map::widget(
     [
         'leafLet' => $leaflet,
         'options' => [
+            'id' => 'w0',
             'style' => 'color:#000;'
         ],
     ]

@@ -141,6 +141,51 @@ class LeafLetTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
+    public function testWidgetConfigHeightNumeric() {
+        $view = \Yii::$app->getView();
+        $content = $view->render('//map-leaflet-config', ['config' => [
+            'height' => 200,
+            'options' => [
+                'id' => 'w0',
+                'style' => 'color:#000;'
+            ],
+        ]]);
+        $actual = $view->render('//layouts/main', ['content' => $content]);
+
+        $expected = file_get_contents(__DIR__ . '/data/test-map-leaflet.bin');
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testWidgetConfigHeightPx() {
+        $view = \Yii::$app->getView();
+        $content = $view->render('//map-leaflet-config', ['config' => [
+            'height' => '200px',
+            'options' => [
+                'id' => 'w0',
+                'style' => 'color:#000;'
+            ],
+        ]]);
+        $actual = $view->render('//layouts/main', ['content' => $content]);
+
+        $expected = file_get_contents(__DIR__ . '/data/test-map-leaflet.bin');
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testWidgetConfigHeightPercent() {
+        $view = \Yii::$app->getView();
+        $content = $view->render('//map-leaflet-config', ['config' => [
+            'height' => '100%',
+            'options' => [
+                'id' => 'w0',
+                'style' => 'color: #000;'
+            ],
+        ]]);
+        $actual = $view->render('//layouts/main', ['content' => $content]);
+
+        $expected = file_get_contents(__DIR__ . '/data/test-map-leaflet-height-percent.bin');
+        $this->assertEquals($expected, $actual);
+    }
+
     public function testPlugins() {
         $leafLet = new LeafLet(
             [

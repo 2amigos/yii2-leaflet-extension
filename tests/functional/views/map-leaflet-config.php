@@ -7,6 +7,7 @@ use yii\web\JsExpression;
 use tests\TestPlugin;
 
 /* @var $this yii\web\View */
+/* @var $config array */
 ?>
 
 <?php
@@ -49,11 +50,4 @@ $leaflet->installPlugin($plugin);
 
 $leaflet->getPlugins()->registerAssetBundles($this);
 // finally render the widget
-echo $leaflet->widget(
-    [
-        'options' => [
-            'id' => 'w0',
-            'style' => 'color:#000;'
-        ],
-    ]
-);
+echo $leaflet->widget($config);
