@@ -6,6 +6,7 @@
  */
 namespace dosamigos\leaflet\types;
 
+use dosamigos\leaflet\LeafLet;
 use yii\base\InvalidConfigException;
 use yii\helpers\Json;
 use yii\web\JsExpression;
@@ -72,6 +73,9 @@ class LatLng extends Type implements ArrayableInterface
     public function toArray($encode = false)
     {
         $latLng = [$this->lat, $this->lng];
-        return $encode ? new JsExpression(Json::encode($latLng)) : $latLng;
+
+        return $encode
+            ? new JsExpression(Json::encode($latLng, LeafLet::JSON_OPTIONS))
+            : $latLng;
     }
 }

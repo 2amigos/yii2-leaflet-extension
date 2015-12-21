@@ -8,6 +8,7 @@
 namespace dosamigos\leaflet\layers;
 
 
+use dosamigos\leaflet\LeafLet;
 use yii\helpers\Json;
 use yii\web\JsExpression;
 
@@ -38,7 +39,7 @@ class GeoJson extends Layer
      */
     public function encode()
     {
-        $data = Json::encode($this->data);
+        $data = Json::encode($this->data, LeafLet::JSON_OPTIONS);
         $options = $this->getOptions();
         $name = $this->name;
         $map = $this->map;

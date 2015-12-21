@@ -7,6 +7,7 @@
 
 namespace dosamigos\leaflet\layers;
 
+use dosamigos\leaflet\LeafLet;
 use yii\helpers\Json;
 use yii\web\JsExpression;
 
@@ -38,7 +39,7 @@ class Polygon extends PolyLine
      */
     public function encode()
     {
-        $latLngs = Json::encode($this->getLatLngstoArray());
+        $latLngs = Json::encode($this->getLatLngstoArray(), LeafLet::JSON_OPTIONS);
         $options = $this->getOptions();
         $name = $this->name;
         $map = $this->map;

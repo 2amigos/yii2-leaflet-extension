@@ -6,6 +6,7 @@
  */
 namespace dosamigos\leaflet\layers;
 
+use dosamigos\leaflet\LeafLet;
 use yii\base\Component;
 use dosamigos\leaflet\types\Type;
 use yii\helpers\Json;
@@ -52,7 +53,7 @@ abstract class Layer extends Component
             }
             $options[$key] = $option;
         }
-        return empty($options) ? '{}' : Json::encode($options);
+        return empty($options) ? '{}' : Json::encode($options, LeafLet::JSON_OPTIONS);
     }
 
     /**

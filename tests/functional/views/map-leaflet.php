@@ -52,6 +52,7 @@ $leaflet->getPlugins()->registerAssetBundles($this);
 echo $leaflet->widget(
     [
         'options' => [
+            'id' => 'test-map',
             'style' => 'color:#000;'
         ],
     ]

@@ -45,6 +45,7 @@ $leaflet->addLayer($marker)// add the marker
 // finally render the widget
 echo Map::widget(
     [
+        'id' => 'test-map',
         'leafLet' => $leaflet,
         'options' => [
             'style' => 'color:#000;'

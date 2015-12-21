@@ -6,16 +6,16 @@
 <body>
 
 
-<div id="w0" style="color:#000;height:200px"></div><script src="/0/empty-test.js"></script>
+<div id="test-map" style="color:#000;height:200px"></div><script src="/0/empty-test.js"></script>
 <script src="/1/leaflet-src.js"></script>
 <script src="/2/jquery.js"></script>
 <script type="text/javascript">jQuery(document).ready(function () {
 function map_init(){
-var map = L.map('w0', {"center":[51.508,-0.11],"zoom":13});
+var map = L.map('test-map', {"center":[51.508,-0.11],"zoom":13});
 L.marker([51.508,-0.11], {}).bindPopup("Hi!").addTo(map);
 var test = L.TestPlugin();
 
-L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg', {"attribution":"Tiles Courtesy of <a href=\"http://www.mapquest.com/\" target=\"_blank\">MapQuest</a> <img src=\"http://developer.mapquest.com/content/osm/mq_logo.png\">, Map data &copy; <a href=\"http://openstreetmap.org\">OpenStreetMap</a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>","subdomains":"1234"}).addTo(map);
+L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg', {"attribution":"Tiles Courtesy of <a href=\"http://www.mapquest.com/\" target=\"_blank\">MapQuest</a> <img src=\"http://developer.mapquest.com/content/osm/mq_logo.png\">, Map data &copy; <a href=\"http://openstreetmap.org\">OpenStreetMap</a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>","subdomains":1234}).addTo(map);
 map.on('click', function(e){ console.log(e); });}
 map_init();
 });</script></body>

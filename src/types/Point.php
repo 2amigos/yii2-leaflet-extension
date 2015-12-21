@@ -7,6 +7,7 @@
 
 namespace dosamigos\leaflet\types;
 
+use dosamigos\leaflet\LeafLet;
 use yii\base\InvalidConfigException;
 use yii\helpers\Json;
 use yii\web\JsExpression;
@@ -70,6 +71,6 @@ class Point extends Type implements ArrayableInterface
     public function toArray($encode = false)
     {
         $point = [$this->x, $this->y];
-        return $encode ? new JsExpression(Json::encode($point)) : $point;
+        return $encode ? new JsExpression(Json::encode($point, LeafLet::JSON_OPTIONS)) : $point;
     }
 }

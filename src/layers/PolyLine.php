@@ -7,6 +7,7 @@
 
 namespace dosamigos\leaflet\layers;
 
+use dosamigos\leaflet\LeafLet;
 use dosamigos\leaflet\types\LatLng;
 use dosamigos\leaflet\types\LatLngBounds;
 use yii\base\InvalidParamException;
@@ -97,7 +98,7 @@ class PolyLine extends Layer
      */
     public function encode()
     {
-        $latLngs = Json::encode($this->getLatLngstoArray());
+        $latLngs = Json::encode($this->getLatLngstoArray(), LeafLet::JSON_OPTIONS);
         $options = $this->getOptions();
         $name = $this->name;
         $map = $this->map;

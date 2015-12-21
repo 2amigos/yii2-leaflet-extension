@@ -7,6 +7,7 @@
 
 namespace dosamigos\leaflet\types;
 
+use dosamigos\leaflet\LeafLet;
 use yii\base\InvalidConfigException;
 use yii\helpers\Json;
 use yii\web\JsExpression;
@@ -183,7 +184,7 @@ class Icon extends Type
      */
     public function encode()
     {
-        $options = Json::encode($this->getOptions());
+        $options = Json::encode($this->getOptions(), LeafLet::JSON_OPTIONS);
 
         $js = "L.icon($options)";
         if ($this->name) {

@@ -77,7 +77,7 @@ abstract class Plugin extends Component
      */
     public function getOptions()
     {
-        return empty($this->clientOptions) ? '{}' : Json::encode($this->clientOptions);
+        return empty($this->clientOptions) ? '{}' : Json::encode($this->clientOptions, LeafLet::JSON_OPTIONS);
     }
 
     /**

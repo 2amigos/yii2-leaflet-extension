@@ -29,6 +29,9 @@ use yii\helpers\ArrayHelper;
  */
 class LeafLet extends Component
 {
+    // JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK
+    const JSON_OPTIONS = 352;
+
     /**
      * @var integer a counter used to generate [[name]] for layers.
      * @internal
