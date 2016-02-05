@@ -88,6 +88,13 @@ class Map extends Widget
 
         $clientOptions = $this->leafLet->clientOptions;
 
+        // for map load event to fire, we have to postpone setting view, until events are bound
+        // see https://github.com/Leaflet/Leaflet/issues/3560
+        $lateInitClientOptions['center'] = Json::encode($clientOptions['center']);
+        $lateInitClientOptions['zoom'] = $clientOptions['zoom'];
+        unset($clientOptions['center']);
+        unset($clientOptions['zoom']);
+
         $options = empty($clientOptions) ? '{}' : Json::encode($clientOptions, LeafLet::JSON_OPTIONS);
         array_unshift($js, "var $name = L.map('$id', $options);");
         if ($this->leafLet->getTileLayer() !== null) {
@@ -101,6 +108,9 @@ class Map extends Widget
                 $js[] = "$name.on('$event', $handler);";
             }
         }
+
+        $js[] = "$name.setView({$lateInitClientOptions['center']}, {$lateInitClientOptions['zoom']});";
+
         $view->registerJs("function {$name}_init(){\n" . implode("\n", $js) . "}\n{$name}_init();");
     }
 }

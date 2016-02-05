@@ -138,6 +138,7 @@ class LeafLetTest extends TestCase
         $actual = $view->render('//layouts/main', ['content' => $content]);
 
         $expected = file_get_contents(__DIR__ . '/data/test-map-leaflet.bin');
+
         $this->assertEquals($expected, $actual);
     }
 
@@ -177,6 +178,7 @@ class LeafLetTest extends TestCase
             ],
         ]]);
         $actual = $view->render('//layouts/main', ['content' => $content]);
+
         $expected = file_get_contents(__DIR__ . '/data/test-map-leaflet-height-percent.bin');
         $this->assertEquals($expected, $actual);
     }
