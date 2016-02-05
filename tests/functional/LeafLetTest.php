@@ -136,7 +136,7 @@ class LeafLetTest extends TestCase
         $view = \Yii::$app->getView();
         $content = $view->render('//map-leaflet');
         $actual = $view->render('//layouts/main', ['content' => $content]);
-        file_put_contents(__DIR__ . '/data/test-map-leaflet.bin', $actual);
+
         $expected = file_get_contents(__DIR__ . '/data/test-map-leaflet.bin');
 
         $this->assertEquals($expected, $actual);
