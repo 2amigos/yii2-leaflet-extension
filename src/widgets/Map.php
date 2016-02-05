@@ -29,10 +29,10 @@ class Map extends Widget
      */
     public $leafLet;
     /**
-     * @var int the height of the map. Failing to configure the height of the map, will result in
+     * @var string the height of the map. Failing to configure the height of the map, will result in
      * unexpected results.
      */
-    public $height = 200;
+    public $height = '200px';
     /**
      * @var array the HTML attributes for the widget container tag.
      */
@@ -54,16 +54,11 @@ class Map extends Widget
                 "'leafLet' attribute cannot be empty and should be of type LeafLet component."
             );
         }
-        $inlineStyles = ArrayHelper::getValue($this->options, 'style');
-        if ($inlineStyles) {
-            $styles = explode(';', $inlineStyles);
-            $styles[] = "height:{$this->height}px";
-            $this->options['style'] = implode(";", array_filter($styles));
-        } else {
-            // @codeCoverageIgnoreStart
-            $this->options['style'] = "height:{$this->height}px;";
-            // @codeCoverageIgnoreEnd
+        if(is_numeric($this->height)) {
+            $this->height .= 'px';
         }
+
+        Html::addCssStyle($this->options, ['height' => $this->height], false);
     }
 
     /**

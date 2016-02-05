@@ -101,7 +101,7 @@ class LayerGroup extends Component
         foreach ($layers as $layer) {
             $js[] = $layer->encode();
         }
-        $initJs = "L.layerGroup($names)" . ($map !== null ? ".addTo($map);" : "");
+        $initJs = "L.layerGroup($names)" . ($map !== null ? ".addTo($map);\n" : "");
 
         if (empty($name)) {
             $js[] = $initJs . ($map !== null ? "" : ";");

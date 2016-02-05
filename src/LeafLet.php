@@ -281,7 +281,6 @@ class LeafLet extends Component
     {
         ob_start();
         ob_implicit_flush(false);
-        /** @var Widget $widget */
         $config['leafLet'] = $this;
         $widget = new Map($config);
         $out = $widget->run();
