@@ -103,8 +103,8 @@ class LeafLetTest extends TestCase
 
         $polygon->setLatLngs($latLngs);
         $polygon->insertAtTheBottom = true;
-        $littleton = new Marker(['latLng' => new LatLng(['lat' => 39.61, 'lng' => -105.02])]);
-        $denver = new Marker(['latLng' => new LatLng([ 'lat' => 39.74, 'lng' => -104.99])]);
+        $littleton = new Marker(['name' => 'littleton', 'latLng' => new LatLng(['lat' => 39.61, 'lng' => -105.02])]);
+        $denver = new Marker(['name' => 'denver', 'latLng' => new LatLng([ 'lat' => 39.74, 'lng' => -104.99])]);
 
         $group = new LayerGroup();
         $group->addLayer($littleton);
@@ -129,7 +129,7 @@ class LeafLetTest extends TestCase
         $leafLet->installPlugin($plugin);
         $actual = $leafLet->getJs();
 
-        $this->assertEquals(file_get_contents(__DIR__ . '/data/leaflet-js.bin'), implode("\n", $actual));
+        $this->assertEquals(trim(file_get_contents(__DIR__ . '/data/leaflet-js.bin')), implode("\n", $actual));
     }
 
     public function testWidget() {
