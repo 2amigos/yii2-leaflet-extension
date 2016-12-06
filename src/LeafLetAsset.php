@@ -39,8 +39,7 @@ class LeafLetAsset extends AssetBundle
         'leaflet.css'
     ];
 
-    public function init()
-    {
-        $this->js = YII_DEBUG ? ['leaflet-src.js'] : ['leaflet.js'];
-    }
+    public $js = [
+        'leaflet-src.js'
+    ];
 }
