@@ -54,7 +54,7 @@ class Map extends Widget
                 "'leafLet' attribute cannot be empty and should be of type LeafLet component."
             );
         }
-        if(is_numeric($this->height)) {
+        if (is_numeric($this->height)) {
             $this->height .= 'px';
         }
 
@@ -92,6 +92,10 @@ class Map extends Widget
         // see https://github.com/Leaflet/Leaflet/issues/3560
         $lateInitClientOptions['center'] = Json::encode($clientOptions['center']);
         $lateInitClientOptions['zoom'] = $clientOptions['zoom'];
+        if (isset($clientOptions['bounds'])) {
+            $lateInitClientOptions['bounds'] = $clientOptions['bounds'];
+            unset($clientOptions['bounds']);
+        }
         unset($clientOptions['center']);
         unset($clientOptions['zoom']);
 
@@ -109,7 +113,11 @@ class Map extends Widget
             }
         }
 
-        $js[] = "$name.setView({$lateInitClientOptions['center']}, {$lateInitClientOptions['zoom']});";
+        if (isset($lateInitClientOptions['bounds'])) {
+            $js[] = "$name.fitBounds({$lateInitClientOptions['bounds']});";
+        } else {
+            $js[] = "$name.setView({$lateInitClientOptions['center']}, {$lateInitClientOptions['zoom']});";
+        }
 
         $view->registerJs("function {$name}_init(){\n" . implode("\n", $js) . "}\n{$name}_init();");
     }
