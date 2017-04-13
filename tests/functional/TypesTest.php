@@ -90,6 +90,23 @@ class TypesTest extends TestCase
         LatLngBounds::getBoundsOfLatLngs(['wrong']);
     }
 
+    public function testGetCenterOfLatLngBounds()
+    {
+
+        $center1 = new LatLng(['lat' => 42.382271, 'lng' => -71.2414175]);
+
+        $bounds = new LatLngBounds(
+            [
+                'southWest' => new LatLng(['lat' => 42.361972, 'lng' => -71.275202]),
+                'northEast' => new LatLng(['lat' => 42.40257, 'lng' => -71.207633])
+            ]
+        );
+
+        $center2 = $bounds->getCenter();
+
+        $this->assertEquals($center1, $center2);
+    }
+
     public function testIcon()
     {
         $point = new Point(['x' => 1, 'y' => 2]);

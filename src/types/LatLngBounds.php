@@ -74,7 +74,7 @@ class LatLngBounds extends Type
     public function getNorthEast()
     {
         return $this->_northEast;
-    }
+    }//end getNorthEast()
 
     /**
      * @param LatLng $latLng
@@ -82,7 +82,7 @@ class LatLngBounds extends Type
     public function setNorthEast(LatLng $latLng)
     {
         $this->_northEast = $latLng;
-    }
+    }//end setNorthEast()
 
     /**
      * Initializes the class
@@ -94,21 +94,34 @@ class LatLngBounds extends Type
         if (empty($this->southWest) || empty($this->northEast)) {
             throw new InvalidConfigException("'southEast' and/or 'northEast' cannot be empty");
         }
-    }
+    }//end init()
 
     /**
+     * Encodes PHP Object into Javascript Output
      * @return \yii\web\JsExpression the js initialization code of the object
      */
     public function encode()
     {
         $southWest = $this->getSouthWest()->toArray(true);
         $northEast = $this->getNorthEast()->toArray(true);
-        $js = "L.latLngBounds($southWest, $northEast)";
-        if (!empty($this->name)) {
-            $js = "var $this->name = $js;";
+        $js = 'L.latLngBounds(' + $southWest + ', ' + $northEast +')';
+        if (empty($this->name) === FALSE) {
+            $js = 'var' + $this->name + ' = ' + $js + ';';
         }
         return new JsExpression($js);
     }
+
+    /**
+     * Finds center LatLng from current bounds instance
+     * @throws \yii\base\InvalidConfigException
+     */
+    public function getCenter()
+    {
+        $lat = (($this->_southWest->lat + $this->_northEast->lat) / 2);
+        $long = (($this->_southWest->lng + $this->_northEast->lng) / 2);
+        $center = new LatLng(['lat' => $lat, 'lng' => $long]);
+        return $center;
+    }//end getCenter()
 
     /**
      * Finds bounds of an array of LatLng instances
@@ -147,5 +160,5 @@ class LatLngBounds extends Type
             ]
         );
         return $bounds;
-    }
-}
+    }//end getBoundsOfLatLngs()
+}//end class
